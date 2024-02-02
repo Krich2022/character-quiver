@@ -1,0 +1,26 @@
+{
+  "name": "character-quiver",
+  "version": "1.0.0",
+  "description": "Welcome to Character Quiver – your go-to web app for swift and seamless Dungeons and Dragons character creation! Whether you're a seasoned adventurer or new to the realms of D&D, our intuitive interface guides you through selecting races, classes, and customizing backgrounds. What sets us apart? Our built-in Dice Roller adds an element of chance, injecting excitement and authenticity into your quests. Join us in crafting unforgettable characters and embarking on epic journeys. Character Quiver – where imagination meets destiny, one roll at a time!",
+  "main": "server/server.js",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Krich2022/character-quiver.git"
+  },
+  "author": "Keston Rich, Lucas Gilles, Devan Ash, Stretch Spelman, Dillen Grant",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Krich2022/character-quiver/issues"
+  },
+  "homepage": "https://github.com/Krich2022/character-quiver#readme",
+  "scripts": {
+    "start": "node server --ignore client",
+    "develop": "concurrently \"cd server && npm run start\" \"cd client && npm run dev\"",
+    "install": "cd server && npm i && cd ../client && npm i",
+    "seed": "cd server && npm run seed",
+    "build": "cd client && npm run build"
+  },
+  "devDependencies": {
+    "concurrently": "^5.1.0"
+  }
+}
