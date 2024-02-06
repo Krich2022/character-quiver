@@ -19,7 +19,7 @@ const userSchema = new Schema({
     required: true,
     minlength: 5,
   },
-  sheets_id: [
+  sheets: [
     {
       type: Schema.Types.ObjectId,
       ref: 'charcter',
