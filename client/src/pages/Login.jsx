@@ -6,11 +6,11 @@ function Login() {
     // const [passwordVisible, setPasswordVisible] = React.useState(false);
     return (
         <Space direction="vertical">
-            <h2>Login</h2>
+            <h2 className="text-xl">Login</h2>
 
             <form>
                 <div>
-                    <Input placeholder="username" />
+                    <Input placeholder="username" className="my-4" />
                     <Input.Password 
                     placeholder="password" 
                     iconRender={(visible) => (visible ? <EyeTwoTone /> : <EyeInvisibleOutlined />)} 
