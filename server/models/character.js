@@ -1,116 +1,84 @@
 const mongoose = require('mongoose');
+const Schema = mongoose.Schema;
+const characterSchema = new Schema({
+  player: {
+    type: String,
+    required: true,
+    unique: true,
+    trim: true,
+  },
+  name: {
+    type: String,
+    required: true,
+    unique: true,
+    trim: true,
+  },
+  class: {
+    type: String,
+    required: true
+  },
+  sub_class: {
+    type: String,
+    required: true
+  },
+  level: {
+    type: Number,
+    required: true
+  },
+  strength: {
+    type: Number,
+    required: true
+  },
+  dexterity: {
+    type: Number,
+    required: true
+  },
+  constitution: {
+    type: Number,
+    required: true
+  },
+  intelligence: {
+    type: Number,
+    required: true
+  },
+  wisdom: {
+    type: Number,
+    required: true
+  },
+  charisma: {
+    type: Number,
+    required: true
+  },
+  armor_class: {
+    type: Number,
+    required: true
+  },
+  created_at: {
+    type: Date,
+    default: Date.now
+  },
+  initiative: {
+    type: Number,
+    required: true
+  },
+  speed: {
+    type: Number,
+    required: true
+  },
+  hit_points: {
+    type: Number,
+    required: true
+  },
+  perception: {
+    type: Number,
+    required: true
+  },
+  hit_dice: {
+    type: Number,
+    required: true
+  },
+});
 
-mongoose.connect('mongodb://localhost:27017/', {
- useNewUrlParser: true,
- useUnifiedTopology: true,
- useCreateIndex: true,
- useFindAndModify: false
-}).then(() => console.log('MongoDB connected'))
- .catch((err) => console.log(err));
+const Character = mongoose.model('Character', characterSchema);
 
-db.createCollection("Character", {
-    validator: {
-      $jsonSchema: {
-        bsonType: "object",
-        required: ["user_id", "name"],
-        properties: {
-          __id: {
-            bsonType: "int"
-          },
-          user_id: {
-            bsonType: "int"
-          },
-          name: {
-            bsonType: "string"
-          },
-          class: {
-            bsonType: "string"
-          },
-          sub_class: {
-            bsonType: "string"
-          },
-          background: {
-            bsonType: "string"
-          },
-          alignment: {
-            bsonType: "string"
-          },
-          level: {
-            bsonType: "int"
-          },
-          xp: {
-            bsonType: "int"
-          },
-          xp_type: {
-            bsonType: "boolean"
-          },
-          str: {
-            bsonType: "int"
-          },
-          dex: {
-            bsonType: "int"
-          },
-          con: {
-            bsonType: "int"
-          },
-          int: {
-            bsonType: "int"
-          },
-           wis: {
-             bsonType: "int"
-          },
-           char: {
-             bsonType: "int"
-          },
-            ac: {
-             bsonType: "int"
-          },
-          proficiencies: {
-            bsonType: "string"
-          },
-          saving_throws: {
-            bsonType: "string"
-          },
-          ac: {
-            bsonType: "int"
-          },
-          speed: {
-            bsonType: "int"
-          },
-          hp: {
-            bsonType: "int"
-          },
-          temp_hp: {
-            bsonType: "int"
-          },
-          equipment: {
-            bsonType: "string"
-          },
-          traits: {
-            bsonType: "string"
-          },
-          ideals: {
-            bsonType: "string"
-          },
-          bonds: {
-            bsonType: "string"
-          },
-          flaws: {
-            bsonType: "string"
-          },
-          languages: {
-            bsonType: "string"
-          },
-          money: {
-            bsonType: "int"
-          },
-          abilities: {
-            bsonType: "string"
-          },
-          spells: {
-            bsonType: "string"
-          },
-        }
-      }
-    }
-  });
+module.exports = Character;

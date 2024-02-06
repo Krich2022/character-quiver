@@ -1,35 +1,45 @@
 const mongoose = require('mongoose');
+const bcrypt = require('bcrypt');
+const userSchema = new Schema({
 
-mongoose.connect('mongodb://localhost:27017/', {
- useNewUrlParser: true,
- useUnifiedTopology: true,
- useCreateIndex: true,
- useFindAndModify: false
-}).then(() => console.log('MongoDB connected'))
- .catch((err) => console.log(err));
+  username: {
+    type: String,
+    required: true,
+    unique: true,
+    trim: true,
+  },
+  email: {
+    type: String,
+    required: true,
+    unique: true,
+    match: [/.+@.+\..+/, 'Must match an email address!'],
+  },
+  password: {
+    type: String,
+    required: true,
+    minlength: 5,
+  },
+  sheets: [
+    {
+      type: Schema.Types.ObjectId,
+      ref: 'charcter',
+    },
+  ],
+});
 
-db.createCollection("User", {
-    validator: {
-      $jsonSchema: {
-        bsonType: "object",
-        required: ["Username", "Password", "Email"],
-        properties: {
-          ID: {
-            bsonType: "int"
-          },
-          Username: {
-            bsonType: "string"
-          },
-          Password: {
-            bsonType: "string"
-          },
-          Email: {
-            bsonType: "string"
-          },
-          Sheet_IDs: {
-            bsonType: "int"
-          }
-        }
-      }
-    }
-  });
+userSchema.pre('save', async function (next) {
+  if (this.isNew || this.isModified('password')) {
+    const saltRounds = 10;
+    this.password = await bcrypt.hash(this.password, saltRounds);
+  }
+
+  next();
+});
+
+userSchema.methods.isCorrectPassword = async function (password) {
+  return bcrypt.compare(password, this.password);
+};
+
+const User = model('User', userSchema);
+
+module.exports = User;
