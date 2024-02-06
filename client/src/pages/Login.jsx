@@ -1,17 +1,23 @@
-import { Input } from 'antd';
+import React from 'react';
+import { Input, Space } from 'antd';
+import { EyeInvisibleOutlined, EyeTwoTone } from '@ant-design/icons';
 
 function Login() {
+    // const [passwordVisible, setPasswordVisible] = React.useState(false);
     return (
-        <div>
+        <Space direction="vertical">
             <h2>Login</h2>
 
             <form>
                 <div>
-                    <label htmlFor="username">Username</label>
-                    <Input />
+                    <Input placeholder="username" />
+                    <Input.Password 
+                    placeholder="password" 
+                    iconRender={(visible) => (visible ? <EyeTwoTone /> : <EyeInvisibleOutlined />)} 
+                    />
                 </div>
             </form>
-        </div>
+        </Space>
     )
 }
 
