@@ -40,3 +40,13 @@
 .read-the-docs {
   color: #888;
 }
+
+.container-background {
+  background-color: #3c1901;
+  border-color: #E09200;
+  border-width: 2px;
+}
+
+.button-background {
+  background-color: #696773;
+}
