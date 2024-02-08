@@ -1,16 +1,37 @@
 import React from 'react';
-
+import CharacterDetails from './CharacterDetails';
 const CharacterSheet = ({ character }) => {
   return (
-    <div className="character-sheet">
-      <h2>{character.username}</h2>
-      <p>Character Name: {character.name}</p>
-      <p>Class: {character.class}</p>
-      <p>SubClass: {character.subClass}</p>
-      <p>Level: {character.level}</p>
-      <p>XP: {character.xp}</p>
-      <p>Background: {character.background}</p>
-    </div>
+    <>
+      <CharacterInfo/>
+      <CharacterEquipment/>
+      <CharacterClass/>
+      <CharacterSubClass/>
+      <CharacterBackground/>
+      <CharacterAlignment/>
+      <CharacterLevel/>
+      <CharacterXp/>
+      <CharacterStrength/>
+      <CharacterDexterity/>
+      <CharacterConstitution/>
+      <CharacterInteligence/>
+      <CharacterWisdom/>
+      <CharacterCharisma/>
+      <CharacterProficiency/>
+      <CharacterSavingThrows/>
+      <CharacterAc/>
+      <CharacterSpeed/>
+      <CharacterHp/>
+      <CharacterTempHp/>
+      <CharacterTraits/>
+      <CharacterIdeals/>
+      <CharacterBonds/>
+      <CharacterFlaws/>
+      <CharacterLanguages/>
+      <CharacterMoney/>
+      <CharacterAbilities/>
+      <CharacterSpells/>
+    </>
   );
 };
 
