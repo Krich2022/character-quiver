@@ -1,4 +1,4 @@
-const mongoose = require("mongoose");
+const {Schema} = require("mongoose");
 const bcrypt = require("bcrypt");
 const userSchema = new Schema({
   username: {
@@ -21,7 +21,7 @@ const userSchema = new Schema({
   sheets: [
     {
       type: Schema.Types.ObjectId,
-      ref: "Charcter",
+      ref: "Character",
     },
   ],
 });
