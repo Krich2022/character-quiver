@@ -21,7 +21,7 @@ const userSchema = new Schema({
   sheets: [
     {
       type: Schema.Types.ObjectId,
-      ref: "Charcter",
+      ref: "Character",
     },
   ],
 });
