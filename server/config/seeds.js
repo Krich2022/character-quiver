@@ -1,7 +1,13 @@
-const User = require('../models/user');
-const Character = require('../models/character');
+const db = require('../config/connection');
+const { user, character } = require('../models');
 
-const character1 = new Character({
+db.once('open', async () => {
+    await cleanDB('characters');
+    await cleanDB('users');
+
+
+    const characters = await character.insertMany([
+{
     player: 'John Doe',
     name: 'Elrond Half-elven',
     class: 'Wizard',
@@ -19,9 +25,9 @@ const character1 = new Character({
     hit_points:  10,
     perception:  14,
     hit_dice:  4,
-  });
+  },
 
-  const character2 = new Character({
+  {
     player: 'Jane Doe',
     name: 'Gandalf the Grey',
     class: 'Wizard',
@@ -38,9 +44,9 @@ const character1 = new Character({
     hit_points:  10,
     perception:  14,
     hit_dice:  4,
-  });
+  },
 
-  const character3 = new Character({
+  {
     player: 'John Doe',
     name: 'Frodo Baggins',
     class: 'Rogue',
@@ -56,22 +62,20 @@ const character1 = new Character({
     speed:  30,
     hit_points:  10,
     perception:  15,
-    hit_dice:  4,
-  });
+    hit_dice:  4
+  }
+]);
 
-  // Save characters to the database
-  await Promise.all([character1.save(), character2.save(), character3.save()]);
+console.log('characters seeded');
 
-
-  const user = new User({
+  await user.create({
     username: 'johndoe',
     email: 'john.doe@example.com',
-    password: '1234password', // In a real scenario, you would hash the password
-    sheets: [character1._id, character2._id, character3._id],
+    password: '1234password',
+    sheets: [characters[0]._id, characters[2]._id],
   });
 
-  await user.save();
+  console.log('users seeded');
 
-  console.log('Database has been seeded with a user and three characters.');
-
-seedDatabase().catch((error) => console.error(error));
+  process.exit();
+});
