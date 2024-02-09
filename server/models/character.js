@@ -1,5 +1,4 @@
-const mongoose = require('mongoose');
-const Schema = mongoose.Schema;
+const { Schema, model } = require("mongoose");
 const characterSchema = new Schema({
   player: {
     type: String,
@@ -15,70 +14,70 @@ const characterSchema = new Schema({
   },
   class: {
     type: String,
-    required: true
+    required: true,
   },
   sub_class: {
     type: String,
-    required: true
+    required: true,
   },
   level: {
     type: Number,
-    required: true
+    required: true,
   },
   strength: {
     type: Number,
-    required: true
+    required: true,
   },
   dexterity: {
     type: Number,
-    required: true
+    required: true,
   },
   constitution: {
     type: Number,
-    required: true
+    required: true,
   },
   intelligence: {
     type: Number,
-    required: true
+    required: true,
   },
   wisdom: {
     type: Number,
-    required: true
+    required: true,
   },
   charisma: {
     type: Number,
-    required: true
+    required: true,
   },
   armor_class: {
     type: Number,
-    required: true
+    required: true,
   },
   created_at: {
     type: Date,
-    default: Date.now
+    default: Date.now,
   },
   initiative: {
     type: Number,
-    required: true
+    required: true,
   },
   speed: {
     type: Number,
-    required: true
+    required: true,
   },
   hit_points: {
     type: Number,
-    required: true
+    required: true,
   },
   perception: {
     type: Number,
-    required: true
+    required: true,
   },
   hit_dice: {
     type: Number,
-    required: true
+    required: true,
   },
 });
 
-const Character = mongoose.model('Character', characterSchema);
+const Character = model("Character", characterSchema);
 
 module.exports = Character;

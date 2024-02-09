@@ -1,25 +1,21 @@
-import React from 'react';
-import { Input, Space, Button } from 'antd';
-import { EyeInvisibleOutlined, EyeTwoTone } from '@ant-design/icons';
+import { Button, Form } from 'react-bootstrap';
 
 function Login() {
     return (
-        <Space direction="vertical" className="container-background p-10 rounded-2xl">
-            <h2 className="text-xl">Login to your account</h2>
+        <>
+            <div direction="vertical" className="container-background p-5 enable-rounded text-white">
+                <h2 className="pb-3">Login to your account</h2>
 
-            <form>
-                <div>
-                    <Input placeholder="username" className="my-4" />
-                    <Input.Password 
-                    placeholder="password" 
-                    iconRender={(visible) => (visible ? <EyeTwoTone /> : <EyeInvisibleOutlined />)} 
-                    />
-                    <Button type="primary" className="my-4 button-background">Login</Button>
-                </div>
-            </form>
-            <p classname="text-lg">Don't have an account?</p>
-            <Button type="primary" className="button-background">Sign Up</Button>
-        </Space>
+                <form>
+                    <Form.Control type="input" id="inputUsername" placeholder="username" className="mb-4" />
+                    <Form.Control type="password" id="inputPassword" placeholder="password" className="mb-2" />
+                    <Button className="mb-3">Login</Button>
+                </form>
+                <p className="">Don't have an account?</p>
+                <Button className="mb-3">Create an Account</Button>
+                
+            </div>
+        </>
     )
 }
 
