@@ -43,8 +43,10 @@
 
 .container-background {
   background-color: #3c1901;
+  border-style: solid;
   border-color: #E09200;
-  border-width: 2px;
+  border-width: 3px;
+  border-radius: 25px
 }
 
 .button-background {
