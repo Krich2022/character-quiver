@@ -38,7 +38,7 @@ type Query {
     users: [User]
     user(username: String!): User
     characters(username: String): [Character]
-    Character(characterId: ID!): Character
+    character(characterId: ID!): Character
 }
 
 type Mutation {
