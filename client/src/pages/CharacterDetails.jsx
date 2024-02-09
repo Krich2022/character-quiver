@@ -7,7 +7,7 @@ const CharacterDetails = () => {
 
   // Fetch character data from the backend
   useEffect(() => {
-    // Replace with actual API call
+    // Replace with actual API call this is a placeholder
     fetch('/api/characters/current')
       .then(response => response.json())
       .then(data => setCharacter(data));
@@ -17,86 +17,85 @@ const CharacterDetails = () => {
     <div className="character-details">
       <CharacterSheet character={character} />
       <AccordionSection title="Equipment">
-        {/* Render equipment details */}
+        <p>{character.equipment}</p>
       </AccordionSection>
       <AccordionSection title="Spells">
-        {/* Render spells details */}
+      <p>{character.spells}</p>
       </AccordionSection>
-      {/* Add more sections as needed */}
       <AccordionSection title="Name">
-        {/* Render spells details */}
+      <p>{character.name}</p>
       </AccordionSection>
       <AccordionSection title="SubClass">
-        {/* Render spells details */}
+      <p>{character.subClass}</p>
       </AccordionSection>
       <AccordionSection title="Background">
-        {/* Render spells details */}
+      <p>{character.background}</p>
       </AccordionSection>
       <AccordionSection title="Alignment">
-        {/* Render spells details */}
+      <p>{character.alignment}</p>
       </AccordionSection>
       <AccordionSection title="Level">
-        {/* Render spells details */}
+      <p>{character.level}</p>
       </AccordionSection>
       <AccordionSection title="Xp">
-        {/* Render spells details */}
+      <p>{character.xp}</p>
       </AccordionSection>
       <AccordionSection title="Strength">
-        {/* Render spells details */}
+      <p>{character.strength}</p>
       </AccordionSection>
       <AccordionSection title="Dexterity">
-        {/* Render spells details */}
+      <p>{character.dexterity}</p>
       </AccordionSection>
       <AccordionSection title="Constitution">
-        {/* Render spells details */}
+      <p>{character.constitution}</p>
       </AccordionSection>
       <AccordionSection title="Inteligence">
-        {/* Render spells details */}
+      <p>{character.inteligence}</p>
       </AccordionSection>
       <AccordionSection title="Wisdom">
-        {/* Render spells details */}
+      <p>{character.wisdom}</p>
       </AccordionSection>
       <AccordionSection title="Charisma">
-        {/* Render spells details */}
+      <p>{character.charisma}</p>
       </AccordionSection>
       <AccordionSection title="Proficiency">
-        {/* Render spells details */}
+      <p>{character.proficiency}</p>
       </AccordionSection>
       <AccordionSection title="Saving_Throws">
-        {/* Render spells details */}
+      <p>{character.savingThrows}</p>
       </AccordionSection>
       <AccordionSection title="Ac">
-        {/* Render spells details */}
+      <p>{character.ac}</p>
       </AccordionSection>
       <AccordionSection title="Speed">
-        {/* Render spells details */}
+      <p>{character.speed}</p>
       </AccordionSection>
       <AccordionSection title="Hp">
-        {/* Render spells details */}
+      <p>{character.hp}</p>
       </AccordionSection>
       <AccordionSection title="Temp_Hp">
-        {/* Render spells details */}
+      <p>{character.tempHp}</p>
       </AccordionSection>
       <AccordionSection title="Traits">
-        {/* Render spells details */}
+      <p>{character.traits}</p>
       </AccordionSection>
       <AccordionSection title="Ideals">
-        {/* Render spells details */}
+      <p>{character.ideals}</p>
       </AccordionSection>
       <AccordionSection title="Bonds">
-        {/* Render spells details */}
+      <p>{character.bonds}</p>
       </AccordionSection>
       <AccordionSection title="Flaws">
-        {/* Render spells details */}
+      <p>{character.flaws}</p>
       </AccordionSection>
       <AccordionSection title="Languages">
-        {/* Render spells details */}
+      <p>{character.languages}</p>
       </AccordionSection>
       <AccordionSection title="Money">
-        {/* Render spells details */}
+      <p>{character.money}</p>
       </AccordionSection>
       <AccordionSection title="Abilities">
-        {/* Render spells details */}
+      <p>{character.abilities}</p>
       </AccordionSection>
       
 
