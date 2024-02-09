@@ -1,4 +1,4 @@
-import { LOGIN_SUCCESS, LOGOUT, SET_CURRENT_USER } from "./actions";
+import { LOGIN_SUCCESS, LOGOUT, SET_CURRENT_USER } from "../actions";
 
 const initialAuthState = {
   isAuthenticated: false,
