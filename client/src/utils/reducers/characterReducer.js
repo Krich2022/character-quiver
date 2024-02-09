@@ -1,4 +1,4 @@
-import { ADD_CHARACTER, UPDATE_CHARACTER, DELETE_CHARACTER } from "./actions";
+import { ADD_CHARACTER, UPDATE_CHARACTER, DELETE_CHARACTER } from "../actions";
 
 const initialCharactersState = [];
 

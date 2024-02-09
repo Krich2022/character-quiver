@@ -1,10 +1,10 @@
 import { combineReducers } from "@reduxjs/toolkit";
 import authReducer from "./authReducer";
-import charactersReducer from "./charactersReducer";
+import characterReducer from "./characterReducer";
 
 const rootReducer = combineReducers({
   auth: authReducer,
-  characters: charactersReducer,
+  characters: characterReducer,
 });
 
 export default rootReducer;
