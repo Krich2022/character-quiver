@@ -1,14 +1,18 @@
-import React from "react";
-import { configureStore } from "@reduxjs/toolkit";
-import { Provider } from "react-redux";
+import { createContext, useContext, useReducer } from "@reduxjs/toolkit";
 import rootReducer from "./reducers/reducers";
 
-const store = configureStore({
-  reducer: rootReducer,
-});
+const storeContext = createContext();
+const { Provider } = storeContext;
 
-const GlobalState = ({ children }) => (
-  <Provider store={store}>{children}</Provider>
-);
+const StoreProvider = ({ value=[] }) => {
+  const [state, dispatch] = useReducer(rootReducer, {
+    character: []
+  })
 
-export default GlobalState;
+  return <Provider value={[state, dispatch]} {...props} />
+};
+const useStoreContext = () => {
+  return useContext(storeContext);
+}
+
+export { StoreProvider, useStoreContext };
