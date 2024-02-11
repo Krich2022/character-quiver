@@ -4,7 +4,7 @@ type User {
     username: String
     email: String
     password: String
-    sheets: [Character]!
+    characters: [Character]!
 }
 
 type Character {
