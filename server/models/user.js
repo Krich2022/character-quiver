@@ -18,7 +18,7 @@ const userSchema = new Schema({
     required: true,
     minlength: 5,
   },
-  sheets: [
+  characters: [
     {
       type: Schema.Types.ObjectId,
       ref: "Character",

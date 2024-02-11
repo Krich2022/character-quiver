@@ -18,7 +18,6 @@ const characterSchema = new Schema({
   },
   sub_class: {
     type: String,
-    required: true,
   },
   level: {
     type: Number,

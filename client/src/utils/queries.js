@@ -7,7 +7,7 @@ export const GET_ALL_USERS = gql`
       _id
       username
       email
-      sheets {
+      characters {
         _id
         player
         name
