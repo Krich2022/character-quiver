@@ -9,6 +9,7 @@ import Signup from "./pages/Signup.jsx";
 import Landing from "./pages/Landing.jsx";
 import CharacterCreationForm from "./pages/CharacterCreationForm.jsx";
 import CharacterSheet from "./pages/CharacterSheet.jsx";
+import Dashboard from "./pages/Dashboard.jsx";
 
 const router = createBrowserRouter([
   {
