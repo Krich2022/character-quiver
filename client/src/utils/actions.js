@@ -7,6 +7,10 @@ export const DELETE_CHARACTER = "DELETE_CHARACTER";
 export const FETCH_CHARACTERS_REQUEST = "FETCH_CHARACTERS_REQUEST";
 export const FETCH_CHARACTERS_SUCCESS = "FETCH_CHARACTERS_SUCCESS";
 export const FETCH_CHARACTERS_FAILURE = "FETCH_CHARACTERS_FAILURE";
+export const FETCH_SINGLE_CHARACTER_REQUEST = "FETCH_SINGLE_CHARACTER_REQUEST"
+export const FETCH_SINGLE_CHARACTER_SUCCESS = "FETCH_SINGLE_CHARACTER_SUCCESS"
+export const FETCH_SINGLE_CHARACTER_FAILURE = "FETCH_SINGLE_CHARACTER_FAILURE"
+
 
 // Action creators for user authentication
 export const loginSuccess = (token, user) => ({
@@ -52,4 +56,19 @@ export const fetchCharactersSuccess = (characters) => ({
 export const fetchCharactersFailure = (error) => ({
   type: FETCH_CHARACTERS_FAILURE,
   payload: error,
+});
+
+export const fetchSingleCharacterRequest = (_id) => ({
+  type: FETCH_SINGLE_CHARACTER_REQUEST,
+  payload: _id,
+});
+
+export const fetchSingleCharacterSuccess=(character)=>({
+  type: FETCH_SINGLE_CHARACTER_SUCCESS,
+  payload: character,
+});
+
+export const fetchSingleCharacterFailure=(error)=>({
+  type: FETCH_SINGLE_CHARACTER_FAILURE,
+  payload:error,
 });
