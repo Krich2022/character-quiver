@@ -5,7 +5,7 @@
 
   color-scheme: light dark;
   color: rgba(255, 255, 255, 0.87);
-  background-image: linear-gradient(to bottom right, #385214, #0a0f04) !important;
+  background-image: linear-gradient(to bottom right, #385214, #0a0f04);
 
   font-synthesis: none;
   text-rendering: optimizeLegibility;
@@ -21,7 +21,8 @@ body {
 
   color-scheme: light dark;
   color: rgba(255, 255, 255, 0.87);
-  background-image: linear-gradient(to bottom right, #385214, #0a0f04) !important;
+  /* background-image: linear-gradient(to bottom right, #385214, #0a0f04) !important; */
+  background-image: url("./assets/trees.jpg");
 
   font-synthesis: none;
   text-rendering: optimizeLegibility;
