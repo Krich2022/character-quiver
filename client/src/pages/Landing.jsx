@@ -4,7 +4,7 @@ import { Link } from 'react-router-dom';
 
 const Landing = () => {
   return (
-    <Container fluid className="landing landing-background container-background">
+    <Container fluid className="landing landing-background container-background mt-5">
       <header className="landing-header text-center py-5 text-white">
         <h1>Welcome to Character Quiver</h1>
         <p>Start your journey with our easy-to-use character builder.</p>
