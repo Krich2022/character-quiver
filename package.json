@@ -18,7 +18,8 @@
     "develop": "concurrently \"cd server && npm run start\" \"cd client && npm run dev\"",
     "install": "cd server && npm i && cd ../client && npm i",
     "seed": "cd server && npm run seed",
-    "build": "cd client && npm run build"
+    "build": "cd client && npm run build",
+    "install-and-build": "npm install && npm run build"
   },
   "devDependencies": {
     "concurrently": "^5.1.0"
