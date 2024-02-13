@@ -65,7 +65,7 @@ const CharacterCreationForm = () => {
 
   return (
     <div className="bg-gray-800 p-8 rounded-lg shadow-lg max-w-lg mx-auto">
-      <form onSubmit={handleSubmit} className="flex flex-col gap-4">
+      <form onSubmit={handleSubmit} className="flex flex-col gap-4 container-background">
         <h2 className="text-xl font-bold mb-4 text-center text-white">
           Complete Character Creation
         </h2>

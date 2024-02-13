@@ -5,11 +5,11 @@ import { Link } from 'react-router-dom';
 const Landing = () => {
   return (
     <Container fluid className="landing landing-background container-background">
-      <header className="landing-header text-center py-5">
+      <header className="landing-header text-center py-5 text-white">
         <h1>Welcome to Character Quiver</h1>
         <p>Start your journey with our easy-to-use character builder.</p>
         <div className="custom-image-container">
-          <img src="/assets/cqDrawing.jpg" alt="Large Custom Picture" className="custom-image" />
+          <img src="/assets/cqDrawing.jpg" alt="Large Custom Picture" className="custom-image mb-4" />
           <div className="login-button-wrapper">
             <Link to="/login" className="login-button-link">
               <Button variant="primary" className="button-background">Login</Button>
