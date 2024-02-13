@@ -1,17 +1,11 @@
-import {Accordion,ListGroup} from 'react-bootstrap/Accordion';
+import {Accordion,Button} from 'react-bootstrap/Accordion';
 
-export default function AccordionSection(title,body){
+export default function AccordionSection(key,value){
     return(
         <>
-        <Accordion.Header>{title}</Accordion.Header>
+        <Accordion.Header>{key}</Accordion.Header>
         <Accordion.Body>
-        <ListGroup as="ol">
-            {body.map((text, index) => (
-              <ListGroup.Item as="li" key={index}>
-                {text}
-              </ListGroup.Item>
-            ))}
-          </ListGroup>
+            <p>{value}</p>
         </Accordion.Body>
       </>
     )

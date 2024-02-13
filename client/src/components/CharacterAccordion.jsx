@@ -3,27 +3,16 @@ import AccordionSection from './ui/AccordionSection';
 import Accordion from 'react-bootstrap/Accordion';
 
 
-export default function CharacterAccordion(){
-  const [isOpen, setIsOpen] = useState(false);
-
-  const toggleOpen = () => {
-    setIsOpen(!isOpen);
-  };
+export default function CharacterAccordion({character}){
 
   return (
-
-
     <Accordion defaultActiveKey={['0']} alwaysOpen>
-      
-      {character.map((info,index)=>(
-        <Accordion.Item eventKey={index}>
-        <AccordionSection {...info}/>
+    {Object.entries(character).map(([key, value], index) => (
+      <Accordion.Item eventKey={index}>
+        <AccordionSection title={key} body={value} />
       </Accordion.Item>
-      ))}
-    </Accordion>
-
-
-
+    ))}
+  </Accordion>
   );
 };
 
