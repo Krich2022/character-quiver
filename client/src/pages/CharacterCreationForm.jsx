@@ -1,7 +1,8 @@
-// CharacterCreationForm.jsx
 import React, { useState } from "react";
 import FormInput from "../components/ui/FormInput";
 import SelectOptions from "../components/ui/SelectOptions";
+import { useMutation } from '@apollo/client';
+import { ADD_CHARACTER_MUTATION } from '../utils/mutations';
 
 const CharacterCreationForm = () => {
   const [characterData, setCharacterData] = useState({
@@ -40,15 +41,26 @@ const CharacterCreationForm = () => {
     feats: "",
   });
 
+  const [addCharacter] = useMutation(ADD_CHARACTER_MUTATION);
+
   const handleChange = (event) => {
     const { name, value } = event.target;
     setCharacterData((prevData) => ({ ...prevData, [name]: value }));
   };
 
-  const handleSubmit = (event) => {
+  const handleSubmit = async (event) => {
     event.preventDefault();
-    console.log(characterData);
-    // Here we'd send the characterData to a backend server or store it locally
+    try {
+      const { data } = await addCharacter({
+        variables: {
+          player: 'Player Name',
+          ...characterData,
+        },
+      });
+      console.log('Character created:', data.addCharacter);
+    } catch (error) {
+      console.error('Error creating character:', error);
+    }
   };
 
   return (
