@@ -12,8 +12,7 @@ function HeaderNav() {
                     <Nav>
                         <Nav.Link href='dashboard' className='text-white'>Dashboard</Nav.Link>
                         <Nav.Link href='create' className='text-white'>Create a Character</Nav.Link>
-                        {isLoggedIn ? (<Nav.Link className='text-white' href="logout" onClick={()=> auth.logout()}>Logout</Nav.Link>): (<Nav.Link href='login' className='text-white'>Login</Nav.Link>)}
-                        <Nav.Link href='signup' className='text-white'>Sign Up</Nav.Link>
+                        {isLoggedIn ? (<Nav.Link className='text-white' href="logout" onClick={()=> auth.logout()}>Logout</Nav.Link>): (<Nav.Link href='login' className='text-white'>Login / Sign Up</Nav.Link>)} 
                     </Nav>
                 </Container>
             </Navbar>
