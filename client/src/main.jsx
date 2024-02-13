@@ -6,6 +6,9 @@ import "bootstrap/dist/css/bootstrap.min.css";
 import "./index.css";
 import Login from "./pages/login.jsx";
 import Signup from "./pages/Signup.jsx";
+import Landing from "./pages/Landing.jsx";
+import CharacterCreationForm from "./pages/CharacterCreationForm.jsx";
+import CharacterSheet from "./pages/CharacterSheet.jsx";
 
 const router = createBrowserRouter([
   {
@@ -14,11 +17,24 @@ const router = createBrowserRouter([
     children: [
       {
         index: true,
-        element: <Login />,
+        element: <Landing />,
       },
       {
         path: "/signup",
         element: <Signup />,
+      },
+      { path: "/login", element: <Login /> },
+      {
+        path: "/dashboard",
+        element: <Dashboard />,
+      },
+      {
+        path: "/create",
+        element: <CharacterCreationForm />,
+      },
+      {
+        path: "/character",
+        element: <CharacterSheet />,
       },
     ],
   },
