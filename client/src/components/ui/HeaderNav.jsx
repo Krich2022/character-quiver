@@ -6,6 +6,9 @@ function HeaderNav() {
             <Navbar expand="lg" className='header-nav' fixed='top'>
                 <Container>
                     <Navbar.Brand href='landing' className='text-white'>Character Quiver</Navbar.Brand>
+                    <Nav>
+                        <Nav.Link href='dashboard'>Dashboard</Nav.Link>
+                    </Nav>
                 </Container>
             </Navbar>
         </>
