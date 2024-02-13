@@ -1,20 +1,22 @@
-import { useHistory } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 
 import Button from "react-bootstrap/Button";
 import Card from "react-bootstrap/Card";
 
-export default function CharacterCard({ title, name, level, charClass, id }) {
-  const history = useHistory();
+export default function CharacterCard({ title, name, level, charClass, _id }) {
+  const navigate = useNavigate();
 
   const handleClick = () => {
-    history.push(`/character/${id}`);
+    navigate.push(`/character/${_id}`);
   };
   return (
     <Card>
       <Card.Body>
         <Card.Title>{title}</Card.Title>
         <Card.Text>{`${name}: ${charClass} Level:${level} `}</Card.Text>
-        <Button variant="primary">Go somewhere</Button>
+        <Button variant="primary" onClick={handleClick}>
+          Go somewhere
+        </Button>
       </Card.Body>
     </Card>
   );

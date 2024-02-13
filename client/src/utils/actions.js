@@ -1,16 +1,12 @@
-// actions.js
-
-// Action types for user authentication
 export const LOGIN_SUCCESS = "LOGIN_SUCCESS";
 export const LOGOUT = "LOGOUT";
-
-// Action types for user management
 export const SET_CURRENT_USER = "SET_CURRENT_USER";
-
-// Action types for character management
 export const ADD_CHARACTER = "ADD_CHARACTER";
 export const UPDATE_CHARACTER = "UPDATE_CHARACTER";
 export const DELETE_CHARACTER = "DELETE_CHARACTER";
+export const FETCH_CHARACTERS_REQUEST = "FETCH_CHARACTERS_REQUEST";
+export const FETCH_CHARACTERS_SUCCESS = "FETCH_CHARACTERS_SUCCESS";
+export const FETCH_CHARACTERS_FAILURE = "FETCH_CHARACTERS_FAILURE";
 
 // Action creators for user authentication
 export const loginSuccess = (token, user) => ({
@@ -42,4 +38,18 @@ export const updateCharacter = (character) => ({
 export const deleteCharacter = (_id) => ({
   type: DELETE_CHARACTER,
   payload: _id,
+});
+
+export const fetchCharactersRequest = () => ({
+  type: FETCH_CHARACTERS_REQUEST,
+});
+
+export const fetchCharactersSuccess = (characters) => ({
+  type: FETCH_CHARACTERS_SUCCESS,
+  payload: characters,
+});
+
+export const fetchCharactersFailure = (error) => ({
+  type: FETCH_CHARACTERS_FAILURE,
+  payload: error,
 });

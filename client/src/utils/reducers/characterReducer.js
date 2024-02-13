@@ -1,4 +1,9 @@
-import { ADD_CHARACTER, UPDATE_CHARACTER, DELETE_CHARACTER } from "../actions";
+import {
+  ADD_CHARACTER,
+  UPDATE_CHARACTER,
+  DELETE_CHARACTER,
+  FETCH_CHARACTERS_SUCCESS,
+} from "../actions";
 
 const initialCharactersState = [];
 
@@ -12,6 +17,8 @@ const characterReducer = (state = initialCharactersState, action) => {
       );
     case DELETE_CHARACTER:
       return state.filter((character) => character._id !== action.payload);
+    case FETCH_CHARACTERS_SUCCESS:
+      return action.payload;
     default:
       return state;
   }
