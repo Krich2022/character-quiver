@@ -34,6 +34,10 @@
   }
 }
 
+.page-bg {
+  background-image: linear-gradient(to bottom right, #385214, #0a0f04);
+}
+
 .card {
   padding: 2em;
 }
@@ -54,32 +58,11 @@
   background-color: #696773;
 }
 
-.custom-image-container {
-  position: relative;
-  width:  100%;
-
-  overflow: hidden;
-}
-
-.custom-image {
-  width:  100%;
-  height: auto;
-}
-
-.login-button-wrapper {
-  position: absolute;
-  bottom:  20px; /* Position the button at the bottom of the image */
-  left:  50%; /* Center the button horizontally */
-  transform: translateX(-50%); /* Ensure the center of the button aligns with the center of the image */
-}
-
-.landing-header {
-  border:  2px solid #E09200; /* Adjust the color and thickness as desired */
-  border-radius:  10px; /* Optional: adds rounded corners to the border */
-  padding:  1rem; /* Optional: adds space around the content inside the header */
+.header-nav {
+  width: 100%;
+  z-index: 999;
   background-color: #3c1901;
-}
-.landing-header h1,
-.landing-header p {
-  color: #696773; /* Green color */
+  border-style: solid;
+  border-color: #E09200;
+  border-bottom-width: 3px;
 }
