@@ -1,9 +1,3 @@
-import 
-
-function Dashboard() {
-    return(
-        <></>
-    )
+export default function Dashboard() {
+  return <div></div>;
 }
-
-export default Dashboard;
