@@ -32,7 +32,10 @@ function LoginPage(props) {
         }
     };
 
-
+    const handleChange = (event) => {
+        const { name, value } = event.target;
+        setFormState({ ...formState, [name]: value });
+    };
 
     return (
         <>
@@ -46,6 +49,7 @@ function LoginPage(props) {
                     name="email" 
                     placeholder="email" 
                     className="mb-4" 
+                    onChange={handleChange}
                     />
                     <Form.Control 
                     type="password" 
@@ -53,6 +57,7 @@ function LoginPage(props) {
                     name="password" 
                     placeholder="password" 
                     className="mb-2" 
+                    onChange={handleChange}
                     />
                     <Button className="mb-3" onClick={handleSubmit}>
                         Login

@@ -2,7 +2,6 @@ import React from 'react';
 import { Container, Row, Col, Button } from 'react-bootstrap';
 import { Link } from 'react-router-dom';
 
-export default Landing;
 const Landing = () => {
   return (
     <Container fluid className="landing landing-background container-background">
@@ -24,3 +23,5 @@ const Landing = () => {
     </Container>
   );
 };
+
+export default Landing;
