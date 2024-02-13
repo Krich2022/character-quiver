@@ -46,7 +46,7 @@ db.once("open", async () => {
     },
 
     {
-      player: "John Doe",
+      player: "Jim Doe",
       name: "Frodo Baggins",
       class: "Rogue",
       level: 1,

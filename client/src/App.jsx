@@ -1,20 +1,27 @@
-import { useState } from 'react';
-import './App.css';
-import { Outlet } from 'react-router-dom';
-import Header from './components/Header';
-import { ApolloClient, InMemoryCache, ApolloProvider, createHttpLink } from '@apollo/client';
-import { setContext } from '@apollo/client/link/context';
-import { StoreProvider } from './utils/GlobalState';
+
+import { useState } from "react";
+import "./App.css";
+import { Outlet } from "react-router-dom";
+import Header from "./components/Header";
+import {
+  ApolloClient,
+  InMemoryCache,
+  ApolloProvider,
+  createHttpLink,
+} from "@apollo/client";
+import { setContext } from "@apollo/client/link/context";
+import { StoreProvider } from "./utils/GlobalState";
+
 
 const httpLink = createHttpLink({
-  uri: '/graphql',
+  uri: "/graphql",
 });
 const authLink = setContext((_, { headers }) => {
-  const token = localStorage.getItem('id_token');
+  const token = localStorage.getItem("id_token");
   return {
     headers: {
       ...headers,
-      authorization: token ? `Bearer ${token}` : '',
+      authorization: token ? `Bearer ${token}` : "",
     },
   };
 });
@@ -24,15 +31,14 @@ const client = new ApolloClient({
 });
 
 function App() {
-  
   return (
-    <ApolloProvider client={client}>
+    <ApolloProvider client={client} className='text-white page-bg'>
       <StoreProvider>
         <Header />
         <Outlet />
       </StoreProvider>
     </ApolloProvider>
-  )
+  );
 }
 
-export default App
+export default App;

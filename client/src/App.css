@@ -33,6 +33,10 @@
   }
 }
 
+.page-bg {
+  background-image: linear-gradient(to bottom right, #385214, #0a0f04);
+}
+
 .card {
   padding: 2em;
 }
@@ -51,4 +55,13 @@
 
 .button-background {
   background-color: #696773;
+}
+
+.header-nav {
+  width: 100%;
+  z-index: 999;
+  background-color: #3c1901;
+  border-style: solid;
+  border-color: #E09200;
+  border-bottom-width: 3px;
 }

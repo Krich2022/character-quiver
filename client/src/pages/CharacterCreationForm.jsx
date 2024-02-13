@@ -1,16 +1,17 @@
-// CharacterCreationForm.jsx
-import React, { useState } from 'react';
-import FormInput from './FormInput';
-import SelectOptions from './SelectOptions';
+import React, { useState } from "react";
+import FormInput from "../components/ui/FormInput";
+import SelectOptions from "../components/ui/SelectOptions";
+import { useMutation } from '@apollo/client';
+import { ADD_CHARACTER_MUTATION } from '../utils/mutations';
 
 const CharacterCreationForm = () => {
   const [characterData, setCharacterData] = useState({
-    name: '',
-    race: '',
-    class: '',
-    subclass: '',
-    background: '',
-    alignment: '',
+    name: "",
+    race: "",
+    class: "",
+    subclass: "",
+    background: "",
+    alignment: "",
     level: 1,
     xp: 0,
     strength: 10,
@@ -24,37 +25,50 @@ const CharacterCreationForm = () => {
     speed: 30,
     hp: 10,
     tempHp: 0,
-    traits: '',
-    ideals: '',
-    bonds: '',
-    flaws: '',
-    languages: '',
+    traits: "",
+    ideals: "",
+    bonds: "",
+    flaws: "",
+    languages: "",
     cp: 0,
     sp: 0,
     gp: 0,
     pp: 0,
-    abilities: '',
-    spells: '',
-    skills: '',
-    equipment: '',
-    feats: '',
+    abilities: "",
+    spells: "",
+    skills: "",
+    equipment: "",
+    feats: "",
   });
+
+  const [addCharacter] = useMutation(ADD_CHARACTER_MUTATION);
 
   const handleChange = (event) => {
     const { name, value } = event.target;
-    setCharacterData(prevData => ({ ...prevData, [name]: value }));
+    setCharacterData((prevData) => ({ ...prevData, [name]: value }));
   };
 
-  const handleSubmit = (event) => {
+  const handleSubmit = async (event) => {
     event.preventDefault();
-    console.log(characterData);
-    // Here we'd send the characterData to a backend server or store it locally
+    try {
+      const { data } = await addCharacter({
+        variables: {
+          player: 'Player Name',
+          ...characterData,
+        },
+      });
+      console.log('Character created:', data.addCharacter);
+    } catch (error) {
+      console.error('Error creating character:', error);
+    }
   };
 
   return (
-    <div className="bg-gray-800 p-8 rounded-lg shadow-lg max-w-lg mx-auto">
-      <form onSubmit={handleSubmit} className="flex flex-col gap-4">
-        <h2 className="text-xl font-bold mb-4 text-center text-white">Complete Character Creation</h2>
+    <div className="bg-gray-800 p-8 rounded-lg shadow-lg max-w-lg mx-auto mt-5">
+      <form onSubmit={handleSubmit} className="flex flex-col gap-4 container-background">
+        <h2 className="text-xl font-bold mb-4 text-center text-white">
+          Complete Character Creation
+        </h2>
 
         {/* Name */}
         <FormInput
@@ -71,7 +85,17 @@ const CharacterCreationForm = () => {
           label="Race"
           id="race"
           name="race"
-          options={["Human", "Elf", "Dwarf", "Halfling", "Dragonborn", "Gnome", "Half-Elf", "Half-Orc", "Tiefling"]}
+          options={[
+            "Human",
+            "Elf",
+            "Dwarf",
+            "Halfling",
+            "Dragonborn",
+            "Gnome",
+            "Half-Elf",
+            "Half-Orc",
+            "Tiefling",
+          ]}
           value={characterData.race}
           onChange={handleChange}
         />
@@ -81,7 +105,20 @@ const CharacterCreationForm = () => {
           label="Class"
           id="class"
           name="class"
-          options={["Barbarian", "Bard", "Cleric", "Druid", "Fighter", "Monk", "Paladin", "Ranger", "Rogue", "Sorcerer", "Warlock", "Wizard"]}
+          options={[
+            "Barbarian",
+            "Bard",
+            "Cleric",
+            "Druid",
+            "Fighter",
+            "Monk",
+            "Paladin",
+            "Ranger",
+            "Rogue",
+            "Sorcerer",
+            "Warlock",
+            "Wizard",
+          ]}
           value={characterData.class}
           onChange={handleChange}
         />
@@ -382,7 +419,11 @@ const CharacterCreationForm = () => {
           onChange={handleChange}
         />
 
-        <button type="submit" className="mt-4 p-2 bg-blue-500 text-white font-bold rounded hover:bg-blue-600 transition-colors">Create Character</button>
+        <button
+          type="submit"
+          className="mt-4 p-2 bg-blue-500 text-white font-bold rounded hover:bg-blue-600 transition-colors mb-4">
+          Create Character
+        </button>
       </form>
     </div>
   );

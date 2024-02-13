@@ -67,7 +67,7 @@ function Signup(props) {
         </div>
       </form>
       <p className="text-lg">Already have an account?</p>
-      <Button className="mb-3">Login</Button>
+      <Button href="login" className="mb-3">Login</Button>
     </div>
   );
 }
