@@ -1,6 +1,9 @@
 import React from "react";
 import ReactDOM from "react-dom/client";
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
+import { configureStore } from "@reduxjs/toolkit";
+import rootReducer from "./utils/reducers/reducers.js";
+import { Provider } from "react-redux";
 import App from "./App.jsx";
 import "bootstrap/dist/css/bootstrap.min.css";
 import "./index.css";
@@ -40,7 +43,14 @@ const router = createBrowserRouter([
     ],
   },
 ]);
+const store = configureStore({
+  reducer: rootReducer,
+});
 
 ReactDOM.createRoot(document.getElementById("root")).render(
-  <RouterProvider router={router} />
+  <Provider store={store}>
+    <RouterProvider router={router}>
+      <App />
+    </RouterProvider>
+  </Provider>
 );
