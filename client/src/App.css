@@ -56,11 +56,11 @@
 }
 
 .container-background {
-  background-color: #200e01f0;
-  border-style: solid;
-  border-color: #E09200;
-  border-width: 3px;
-  border-radius: 25px
+  background-color: #200e01f0 !important;
+  border-style: solid !important;
+  border-color: #E09200 !important;
+  border-width: 3px !important;
+  border-radius: 25px !important;
 }
 
 .button-container {
