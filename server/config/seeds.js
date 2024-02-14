@@ -9,7 +9,7 @@ db.once("open", async () => {
     {
       player: "John Doe",
       name: "Elrond Half-elven",
-      class: "Wizard",
+      charClass: "Wizard",
       sub_class: "Enchanter",
       level: 1,
       strength: 10,
@@ -27,9 +27,9 @@ db.once("open", async () => {
     },
 
     {
-      player: "Jane Doe",
+      player: "johndoe",
       name: "Gandalf the Grey",
-      class: "Wizard",
+      charClass: "Wizard",
       level: 1,
       strength: 12,
       dexterity: 10,
@@ -46,9 +46,9 @@ db.once("open", async () => {
     },
 
     {
-      player: "Jim Doe",
+      player: "johndoe",
       name: "Frodo Baggins",
-      class: "Rogue",
+      charClass: "Rogue",
       level: 1,
       strength: 10,
       dexterity: 14,
@@ -71,7 +71,9 @@ db.once("open", async () => {
     username: "johndoe",
     email: "john.doe@example.com",
     password: "1234password",
-    characters: [characters[0]._id, characters[2]._id],
+    characters: characters.filter(
+      (character) => character.player === "johndoe"
+    ),
   });
 
   console.log("users seeded");

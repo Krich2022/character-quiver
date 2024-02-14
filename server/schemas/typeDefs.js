@@ -11,7 +11,7 @@ type Character {
     _id: ID
     player: String
     name: String
-    class: String
+    charClass: String
     sub_class: String
     level: Int
     strength: Int

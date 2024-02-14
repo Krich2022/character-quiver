@@ -38,7 +38,7 @@ const router = createBrowserRouter([
         element: <CharacterCreationForm />,
       },
       {
-        path: "/character",
+        path: "/character/:id",
         element: <CharacterSheet />,
       },
     ],
