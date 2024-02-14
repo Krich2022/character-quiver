@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { useHistory } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 
 const postData = async (url = '', data = {}) => {
   const response = await fetch(url, {
@@ -44,7 +44,7 @@ const CharacterCreationForm = () => {
   const [successMessage, setSuccessMessage] = useState('');
   const [errorMessage, setErrorMessage] = useState('');
 
-  const history = useHistory();
+  const navigate = useNavigate();
 
   const handleChange = (event) => {
     const { name, value } = event.target;
@@ -62,7 +62,7 @@ const CharacterCreationForm = () => {
 
       setCharacterData(initialCharacterState);
 
-      history.push('/where-to-go-after-success');
+      navigate('/dashboard');
 
     } catch (error) {
       console.error('Error creating character:', error);
