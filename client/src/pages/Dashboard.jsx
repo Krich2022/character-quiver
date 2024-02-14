@@ -1,21 +1,33 @@
-import { useEffect } from "react";
-import { useDispatch, useSelector } from "react-redux";
-import { fetchCharactersRequest } from "../utils/actions";
+import { useEffect, useState } from "react";
+import { useQuery } from "@apollo/client";
+import { GET_CHARACTERS_FOR_USER } from "../utils/queries";
 import CharacterCard from "../components/ui/Card";
+import Container from 'react-bootstrap/Container';
+import Row from 'react-bootstrap/Row';
 
 export default function Dashboard() {
-  const dispatch = useDispatch();
-  const characters = useSelector((state) => state.characters);
+  const [charactersState, setCharactersState] = useState([]);
+  const { loading, error, data, refetch } = useQuery(GET_CHARACTERS_FOR_USER, {
+    variables: { username: "johndoe" },
+  });
 
   useEffect(() => {
-    dispatch(fetchCharactersRequest());
-  }, [dispatch]);
-
+    if (!loading && !error) {
+      console.log("Characters fetched successfully");
+      console.log(data);
+      setCharactersState(data.user.characters);
+      console.log(charactersState);
+    } else if (error) {
+      console.error("Error fetching characters: ", error);
+    }
+  }, [loading, error]);
   return (
-    <div>
-      {characters.map((character) => (
+    <Container>
+      <Row>
+      {charactersState.map((character) => (
         <CharacterCard key={character._id} {...character}></CharacterCard>
       ))}
-    </div>
+      </Row>
+    </Container>
   );
 }

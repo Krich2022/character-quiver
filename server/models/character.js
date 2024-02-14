@@ -3,7 +3,6 @@ const characterSchema = new Schema({
   player: {
     type: String,
     required: true,
-    unique: true,
     trim: true,
   },
   name: {
@@ -12,7 +11,7 @@ const characterSchema = new Schema({
     unique: true,
     trim: true,
   },
-  class: {
+  charClass: {
     type: String,
     required: true,
   },
