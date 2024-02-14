@@ -7,7 +7,7 @@ const Landing = () => {
     <Container
       fluid
       className="landing landing-background container-background mt-5">
-      <header className="landing-header text-center py-5 text-white">
+      <header className="landing-header text-center py-5 text-color">
         <h1>Welcome to Character Quiver</h1>
         <p>Start your journey with our easy-to-use character builder.</p>
         <div className="custom-image-container">
@@ -18,7 +18,7 @@ const Landing = () => {
           />
           <div className="login-button-wrapper">
             <Link to="/login" className="login-button-link">
-              <Button variant="primary" className="button-background">
+              <Button variant="primary" className="button-container">
                 Login
               </Button>
             </Link>

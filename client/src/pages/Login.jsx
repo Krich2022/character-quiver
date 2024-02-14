@@ -39,7 +39,7 @@ function LoginPage(props) {
 
     return (
         <>
-            <div direction="vertical" className="container-background p-5 enable-rounded text-white">
+            <div direction="vertical" className="container-background p-5 enable-rounded text-color">
                 <h2 className="pb-3">Login to your account</h2>
 
                 <form>
@@ -48,7 +48,7 @@ function LoginPage(props) {
                     id="email" 
                     name="email" 
                     placeholder="email" 
-                    className="mb-4" 
+                    className="mb-4 input-container" 
                     onChange={handleChange}
                     />
                     <Form.Control 
@@ -56,15 +56,15 @@ function LoginPage(props) {
                     id="password" 
                     name="password" 
                     placeholder="password" 
-                    className="mb-2" 
+                    className="mb-4 input-container" 
                     onChange={handleChange}
                     />
-                    <Button className="mb-3" onClick={handleSubmit}>
+                    <Button className="mb-3 button-container" onClick={handleSubmit}>
                         Login
                     </Button>
                 </form>
                 <p className="">Don't have an account?</p>
-                <Button href="signup" className="mb-3">Create an Account</Button>
+                <Button href="signup" className="mb-3 button-container">Create an Account</Button>
                 
             </div>
         </>
