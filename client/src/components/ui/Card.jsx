@@ -10,11 +10,11 @@ export default function CharacterCard({ name, level, charClass, _id }) {
     navigate(`/character/${_id}`);
   };
   return (
-    <Card>
+    <Card className="container-background text-color m-4">
       <Card.Body>
         <Card.Title>{name}</Card.Title>
         <Card.Text>{`${charClass} Level:${level} `}</Card.Text>
-        <Button variant="primary" onClick={handleClick}>
+        <Button variant="primary" onClick={handleClick} className="button-container">
           View Character
         </Button>
       </Card.Body>
