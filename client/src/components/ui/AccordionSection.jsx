@@ -1,12 +1,12 @@
-import {Accordion,Button} from 'react-bootstrap/Accordion';
+import { Accordion } from "react-bootstrap";
 
-export default function AccordionSection(key,value){
-    return(
-        <>
-        <Accordion.Header>{key}</Accordion.Header>
-        <Accordion.Body>
-            <p>{value}</p>
-        </Accordion.Body>
-      </>
-    )
+export default function AccordionSection({ item }) {
+  return (
+    <>
+      <Accordion.Header>{item.key}</Accordion.Header>
+      <Accordion.Body>
+        <p>{item.value}</p>
+      </Accordion.Body>
+    </>
+  );
 }

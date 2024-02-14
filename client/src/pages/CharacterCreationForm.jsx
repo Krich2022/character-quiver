@@ -1,8 +1,7 @@
 import React, { useState } from "react";
 import FormInput from "../components/ui/FormInput";
-import SelectOptions from "../components/ui/SelectOptions";
-import { useMutation } from '@apollo/client';
-import { ADD_CHARACTER_MUTATION } from '../utils/mutations';
+import { useMutation } from "@apollo/client";
+import { ADD_CHARACTER_MUTATION } from "../utils/mutations";
 
 const CharacterCreationForm = () => {
   const [characterData, setCharacterData] = useState({
@@ -53,13 +52,13 @@ const CharacterCreationForm = () => {
     try {
       const { data } = await addCharacter({
         variables: {
-          player: 'Player Name',
+          player: "Player Name",
           ...characterData,
         },
       });
-      console.log('Character created:', data.addCharacter);
+      console.log("Character created:", data.addCharacter);
     } catch (error) {
-      console.error('Error creating character:', error);
+      console.error("Error creating character:", error);
     }
   };
 
