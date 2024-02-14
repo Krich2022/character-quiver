@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { useMutation } from "@apollo/client";
-import { CREATE_CHARACTER_MUTATION } from "../graphql/mutations"; // Adjust the import path as necessary
+import { CREATE_CHARACTER_MUTATION } from "../graphql/mutations";
 
 const CharacterCreationForm = () => {
   const initialCharacterState = {
@@ -48,6 +48,7 @@ const CharacterCreationForm = () => {
         setSuccessMessage('Character successfully created!');
         setCharacterData(initialCharacterState);
         navigate('/dashboard');
+      }
     } catch (error) {
       console.error('Error creating character:', error);
       setErrorMessage('Error creating character: ' + error.message);
