@@ -1,4 +1,4 @@
-import { Nav, Offcanvas, Navbar, Container } from "react-bootstrap";
+import { Nav, Navbar, Container } from "react-bootstrap";
 import auth from "../../utils/auth";
 
 function HeaderNav() {
@@ -21,9 +21,16 @@ function HeaderNav() {
                 Dashboard
               </Nav.Link>
             )}
-            <Nav.Link href="/create" className="text-color">
-              Create a Character
-            </Nav.Link>
+            {isLoggedIn ? (
+              <Nav.Link href="/create" className="text-color">
+                Create a Character
+              </Nav.Link>
+            ) : (
+              <Nav.Link href="/login" className="text-color">
+                Create a Character
+              </Nav.Link>
+            )
+            }
             {isLoggedIn ? (
               <Nav.Link
                 className="text-color"
