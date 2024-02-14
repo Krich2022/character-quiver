@@ -23,7 +23,6 @@ const CharacterCreationForm = () => {
     perception: 0,
     hit_dice: 1,
   };
-
   const [characterData, setCharacterData] = useState(initialCharacterState);
   const [createCharacter, { data, loading, error }] = useMutation(CREATE_CHARACTER_MUTATION);
   const navigate = useNavigate();
@@ -33,7 +32,6 @@ const CharacterCreationForm = () => {
 
   const handleChange = (event) => {
     const { name, value } = event.target;
-    // Handle charClass separately to avoid conflicts
     setCharacterData(prevData => ({
       ...prevData,
       [name]: name === "charClass" ? value : isNaN(value) ? value : parseInt(value)
@@ -43,21 +41,19 @@ const CharacterCreationForm = () => {
   const handleSubmit = async (event) => {
     event.preventDefault();
     try {
-      // Ensure the mutation variable matches the expected GraphQL input
       const { data } = await createCharacter({
         variables: {
           input: {
             ...characterData,
-            class: characterData.charClass, // Map charClass back to class if required by your GraphQL schema
-            // Remove charClass from the mutation input if necessary
+            class: characterData.charClass,
           },
         },
       });
       
       if (data) {
         setSuccessMessage('Character successfully created!');
-        setCharacterData(initialCharacterState); // Reset form state
-        navigate('/dashboard'); // Redirect on success
+        setCharacterData(initialCharacterState);
+        navigate('/dashboard');
       }
     } catch (error) {
       console.error('Error creating character:', error);
@@ -98,5 +94,3 @@ const CharacterCreationForm = () => {
     </div>
   );
 };
-
-export default CharacterCreationForm;
