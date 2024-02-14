@@ -2,6 +2,8 @@
 
 Character Quiver is a web application designed to streamline the Dungeons and Dragons character creation and management process. It boasts an intuitive interface, allowing users to select races, classes, customize backgrounds, and utilize a built-in Dice Roller to add an element of chance to their quests.
 
+![Landing page screenshot](./assets/quiver.png)
+
 ## Features
 
 - **Character Creation**: Create characters with ease, choosing from a wide range of races, classes, and customizable backgrounds.
