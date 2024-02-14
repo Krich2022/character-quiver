@@ -2,6 +2,8 @@ import { useEffect, useState } from "react";
 import { useQuery } from "@apollo/client";
 import { GET_CHARACTERS_FOR_USER } from "../utils/queries";
 import CharacterCard from "../components/ui/Card";
+import Container from 'react-bootstrap/Container';
+import Row from 'react-bootstrap/Row';
 
 export default function Dashboard() {
   const [charactersState, setCharactersState] = useState([]);
@@ -20,10 +22,12 @@ export default function Dashboard() {
     }
   }, [loading, error]);
   return (
-    <div>
+    <Container>
+      <Row>
       {charactersState.map((character) => (
         <CharacterCard key={character._id} {...character}></CharacterCard>
       ))}
-    </div>
+      </Row>
+    </Container>
   );
 }

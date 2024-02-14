@@ -7,7 +7,7 @@ db.once("open", async () => {
 
   const characters = await Character.insertMany([
     {
-      player: "John Doe",
+      player: "johndoe",
       name: "Elrond Half-elven",
       charClass: "Wizard",
       sub_class: "Enchanter",
