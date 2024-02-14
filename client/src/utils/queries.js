@@ -67,26 +67,13 @@ export const GET_USER_BY_USERNAME = gql`
 // Query to get all characters for a user
 export const GET_CHARACTERS_FOR_USER = gql`
   query GetCharactersForUser($username: String!) {
-    characters(username: $username) {
-      _id
-      player
-      name
-      class
-      sub_class
-      level
-      strength
-      dexterity
-      constitution
-      intelligence
-      wisdom
-      charisma
-      armor_class
-      created_at
-      initiative
-      speed
-      hit_points
-      perception
-      hit_dice
+    user(username: $username) {
+      characters {
+        _id
+        charClass
+        level
+        name
+      }
     }
   }
 `;

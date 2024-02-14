@@ -3,19 +3,19 @@ import { useNavigate } from "react-router-dom";
 import Button from "react-bootstrap/Button";
 import Card from "react-bootstrap/Card";
 
-export default function CharacterCard({ title, name, level, charClass, _id }) {
+export default function CharacterCard({ name, level, charClass, _id }) {
   const navigate = useNavigate();
 
   const handleClick = () => {
-    navigate.push(`/character/${_id}`);
+    navigate(`/character/${_id}`);
   };
   return (
     <Card>
       <Card.Body>
-        <Card.Title>{title}</Card.Title>
-        <Card.Text>{`${name}: ${charClass} Level:${level} `}</Card.Text>
+        <Card.Title>{name}</Card.Title>
+        <Card.Text>{`${charClass} Level:${level} `}</Card.Text>
         <Button variant="primary" onClick={handleClick}>
-          Go somewhere
+          View Character
         </Button>
       </Card.Body>
     </Card>
