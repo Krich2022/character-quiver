@@ -12,7 +12,7 @@ const characterSchema = new Schema({
     unique: true,
     trim: true,
   },
-  class: {
+  charClass: {
     type: String,
     required: true,
   },
