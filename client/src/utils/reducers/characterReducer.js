@@ -3,6 +3,7 @@ import {
   UPDATE_CHARACTER,
   DELETE_CHARACTER,
   FETCH_CHARACTERS_SUCCESS,
+  FETCH_SINGLE_CHARACTER_SUCCESS,
 } from "../actions";
 
 const initialCharactersState = [];
@@ -19,6 +20,8 @@ const characterReducer = (state = initialCharactersState, action) => {
       return state.filter((character) => character._id !== action.payload);
     case FETCH_CHARACTERS_SUCCESS:
       return action.payload;
+      case FETCH_SINGLE_CHARACTER_SUCCESS:
+        return action.payload;
     default:
       return state;
   }
