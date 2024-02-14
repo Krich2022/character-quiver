@@ -1,15 +1,12 @@
 import React, { useState } from "react";
 import FormInput from "../components/ui/FormInput";
-
-import SelectOptions from "../components/ui/SelectOptions";
 import { useMutation } from '@apollo/client';
 import { ADD_CHARACTER_MUTATION } from '../utils/mutations';
 import { useNavigation } from 'react-router-dom';
 
 
-const CharacterCreationForm = () => {
+export default function CharacterCreationForm() {
   const [characterData, setCharacterData] = useState({
-    player: "",
     name: "",
     race: "",
     charClass: "",
@@ -62,19 +59,9 @@ const CharacterCreationForm = () => {
           Complete Character Creation
         </h2>
 
-        {/* Player */}
-        <FormInput
-          label="Player"
-          id="Player"
-          name="Player"
-          type="text"
-          value={characterData.name}
-          onChange={handleChange}
-        />
-
         {/* Name */}
         <FormInput
-          label="Name"
+          label="Character Name"
           id="name"
           name="name"
           type="text"
@@ -83,75 +70,32 @@ const CharacterCreationForm = () => {
         />
 
         {/* Race */}
-        <SelectOptions
+        <FormInput
           label="Race"
           id="race"
           name="race"
-          options={[
-            "Human",
-            "Elf",
-            "Dwarf",
-            "Halfling",
-            "Dragonborn",
-            "Gnome",
-            "Half-Elf",
-            "Half-Orc",
-            "Tiefling",
-          ]}
+          type="text"
           value={characterData.race}
           onChange={handleChange}
         />
 
         {/* Class */}
-        <SelectOptions
+        <FormInput
           label="Class"
-          id="class"
-          name="class"
-          options={[
-            "Barbarian",
-            "Bard",
-            "Cleric",
-            "Druid",
-            "Fighter",
-            "Monk",
-            "Paladin",
-            "Ranger",
-            "Rogue",
-            "Sorcerer",
-            "Warlock",
-            "Wizard",
-          ]}
-          value={characterData.class}
+          id="charClass"
+          name="charClass"
+          type="text"
+          value={characterData.charClass}
           onChange={handleChange}
         />
 
         {/* Subclass */}
         <FormInput
-          label="Subclass"
-          id="subclass"
-          name="subclass"
+          label="Sub Class"
+          id="sub_class"
+          name="sub_class"
           type="text"
-          value={characterData.subclass}
-          onChange={handleChange}
-        />
-
-        {/* Background */}
-        <FormInput
-          label="Background"
-          id="background"
-          name="background"
-          type="text"
-          value={characterData.background}
-          onChange={handleChange}
-        />
-
-        {/* Alignment */}
-        <FormInput
-          label="Alignment"
-          id="alignment"
-          name="alignment"
-          type="text"
-          value={characterData.alignment}
+          value={characterData.sub_class}
           onChange={handleChange}
         />
 
@@ -162,16 +106,6 @@ const CharacterCreationForm = () => {
           name="level"
           type="number"
           value={characterData.level}
-          onChange={handleChange}
-        />
-
-        {/* XP */}
-        <FormInput
-          label="Experience Points"
-          id="xp"
-          name="xp"
-          type="number"
-          value={characterData.xp}
           onChange={handleChange}
         />
 
@@ -235,23 +169,23 @@ const CharacterCreationForm = () => {
           onChange={handleChange}
         />
 
-        {/* Proficiency */}
-        <FormInput
-          label="Proficiency Bonus"
-          id="proficiency"
-          name="proficiency"
-          type="number"
-          value={characterData.proficiency}
-          onChange={handleChange}
-        />
-
         {/* AC */}
         <FormInput
           label="Armor Class (AC)"
-          id="ac"
-          name="ac"
+          id="armor_class"
+          name="armor_class"
           type="number"
-          value={characterData.ac}
+          value={characterData.armor_class}
+          onChange={handleChange}
+        />
+
+          {/* Initiative */}
+          <FormInput
+          label="Initiative"
+          id="initiative"
+          name="initiative"
+          type="number"
+          value={characterData.initiative}
           onChange={handleChange}
         />
 
@@ -268,156 +202,30 @@ const CharacterCreationForm = () => {
         {/* HP */}
         <FormInput
           label="Hit Points (HP)"
-          id="hp"
-          name="hp"
+          id="hit_points"
+          name="hit_points"
           type="number"
-          value={characterData.hp}
+          value={characterData.hit_points}
           onChange={handleChange}
         />
 
-        {/* Temp HP */}
+        {/* Perception */}
         <FormInput
-          label="Temporary HP"
-          id="tempHp"
-          name="tempHp"
+          label="Perception"
+          id="perception"
+          name="perception"
           type="number"
-          value={characterData.tempHp}
+          value={characterData.perception}
           onChange={handleChange}
         />
 
-        {/* Traits */}
+        {/* Hit Dice */}
         <FormInput
-          label="Traits"
-          id="traits"
-          name="traits"
+          label="Hit Dice"
+          id="hit_dice"
+          name="hit_dice"
           type="textarea"
-          value={characterData.traits}
-          onChange={handleChange}
-        />
-
-        {/* Ideals */}
-        <FormInput
-          label="Ideals"
-          id="ideals"
-          name="ideals"
-          type="textarea"
-          value={characterData.ideals}
-          onChange={handleChange}
-        />
-
-        {/* Bonds */}
-        <FormInput
-          label="Bonds"
-          id="bonds"
-          name="bonds"
-          type="textarea"
-          value={characterData.bonds}
-          onChange={handleChange}
-        />
-
-        {/* Flaws */}
-        <FormInput
-          label="Flaws"
-          id="flaws"
-          name="flaws"
-          type="textarea"
-          value={characterData.flaws}
-          onChange={handleChange}
-        />
-
-        {/* Languages */}
-        <FormInput
-          label="Languages"
-          id="languages"
-          name="languages"
-          type="text"
-          value={characterData.languages}
-          onChange={handleChange}
-        />
-
-        {/* Money */}
-        <div className="grid grid-cols-4 gap-4">
-          <FormInput
-            label="Copper (CP)"
-            id="cp"
-            name="cp"
-            type="number"
-            value={characterData.cp}
-            onChange={handleChange}
-          />
-          <FormInput
-            label="Silver (SP)"
-            id="sp"
-            name="sp"
-            type="number"
-            value={characterData.sp}
-            onChange={handleChange}
-          />
-          <FormInput
-            label="Gold (GP)"
-            id="gp"
-            name="gp"
-            type="number"
-            value={characterData.gp}
-            onChange={handleChange}
-          />
-          <FormInput
-            label="Platinum (PP)"
-            id="pp"
-            name="pp"
-            type="number"
-            value={characterData.pp}
-            onChange={handleChange}
-          />
-        </div>
-
-        {/* Abilities */}
-        <FormInput
-          label="Abilities"
-          id="abilities"
-          name="abilities"
-          type="textarea"
-          value={characterData.abilities}
-          onChange={handleChange}
-        />
-
-        {/* Spells */}
-        <FormInput
-          label="Spells"
-          id="spells"
-          name="spells"
-          type="textarea"
-          value={characterData.spells}
-          onChange={handleChange}
-        />
-
-        {/* Skills */}
-        <FormInput
-          label="Skills"
-          id="skills"
-          name="skills"
-          type="text"
-          value={characterData.skills}
-          onChange={handleChange}
-        />
-
-        {/* Equipment */}
-        <FormInput
-          label="Equipment"
-          id="equipment"
-          name="equipment"
-          type="textarea"
-          value={characterData.equipment}
-          onChange={handleChange}
-        />
-
-        {/* Feats */}
-        <FormInput
-          label="Feats"
-          id="feats"
-          name="feats"
-          type="textarea"
-          value={characterData.feats}
+          value={characterData.hit_dice}
           onChange={handleChange}
         />
 
@@ -432,4 +240,3 @@ const CharacterCreationForm = () => {
   );
 };
 
-export default CharacterCreationForm;
