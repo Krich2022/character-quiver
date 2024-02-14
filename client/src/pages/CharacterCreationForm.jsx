@@ -48,7 +48,6 @@ const CharacterCreationForm = () => {
         setSuccessMessage('Character successfully created!');
         setCharacterData(initialCharacterState);
         navigate('/dashboard');
-      }
     } catch (error) {
       console.error('Error creating character:', error);
       setErrorMessage('Error creating character: ' + error.message);
