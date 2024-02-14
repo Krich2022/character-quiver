@@ -1,8 +1,11 @@
 import React from "react";
 import { Container, Row, Col, Button } from "react-bootstrap";
 import { Link } from "react-router-dom";
+import auth from "../utils/auth";
 
 const Landing = () => {
+  const isLoggedIn = auth.loggedIn();
+
   return (
     <Container
       fluid
@@ -17,11 +20,15 @@ const Landing = () => {
             className="custom-image mb-4"
           />
           <div className="login-button-wrapper">
-            <Link to="/login" className="login-button-link">
-              <Button variant="primary" className="button-container">
+            {isLoggedIn ? (
+              <Button href="/create" className="button-container">
+                Create a Character
+              </Button>
+            ) : (
+              <Button href="/login" className="button-container">
                 Login
               </Button>
-            </Link>
+            )}
           </div>
         </div>
       </header>

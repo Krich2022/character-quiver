@@ -64,7 +64,7 @@ function LoginPage(props) {
                     </Button>
                 </form>
                 <p className="">Don't have an account?</p>
-                <Button href="signup" className="mb-3 button-container">Create an Account</Button>
+                <Button href="/signup" className="mb-3 button-container">Create an Account</Button>
                 
             </div>
         </>
