@@ -1,24 +1,7 @@
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
-
-const postData = async (url = '', data = {}) => {
-  const response = await fetch(url, {
-    method: 'POST', 
-    mode: 'cors', 
-    cache: 'no-cache', 
-    credentials: 'same-origin', 
-    headers: {
-      'Content-Type': 'application/json'
-    },
-    redirect: 'follow', 
-    referrerPolicy: 'no-referrer', 
-    body: JSON.stringify(data) 
-  });
-  if (!response.ok) {
-    throw new Error(`HTTP error! status: ${response.status}`);
-  }
-  return response.json();
-};
+import { useMutation } from "@apollo/client";
+import { CREATE_CHARACTER_MUTATION } from "../graphql/mutations"; // Adjust the import path as necessary
 
 const CharacterCreationForm = () => {
   const initialCharacterState = {
@@ -41,32 +24,34 @@ const CharacterCreationForm = () => {
     hit_dice: 1,
   };
   const [characterData, setCharacterData] = useState(initialCharacterState);
+  const [createCharacter, { data, loading, error }] = useMutation(CREATE_CHARACTER_MUTATION);
+  const navigate = useNavigate();
+  
   const [successMessage, setSuccessMessage] = useState('');
   const [errorMessage, setErrorMessage] = useState('');
 
-  const navigate = useNavigate();
-
   const handleChange = (event) => {
     const { name, value } = event.target;
-    setCharacterData((prevData) => ({ ...prevData, [name]: isNaN(value) ? value : parseInt(value) }));
+    setCharacterData(prevData => ({ ...prevData, [name]: isNaN(value) ? value : parseInt(value) }));
   };
 
   const handleSubmit = async (event) => {
     event.preventDefault();
-    setSuccessMessage('');
-    setErrorMessage('');
     try {
-      const data = await postData('/api/characters', characterData);
-      console.log('Character created:', data);
-      setSuccessMessage('Character successfully created!');
-
-      setCharacterData(initialCharacterState);
-
-      navigate('/dashboard');
-
+      const { data } = await createCharacter({
+        variables: {
+          input: characterData,
+        },
+      });
+      
+      if (data) {
+        setSuccessMessage('Character successfully created!');
+        setCharacterData(initialCharacterState);
+        navigate('/dashboard');
+      }
     } catch (error) {
       console.error('Error creating character:', error);
-      setErrorMessage(error.message || 'Error creating character');
+      setErrorMessage('Error creating character: ' + error.message);
     }
   };
 
@@ -81,7 +66,7 @@ const CharacterCreationForm = () => {
         {errorMessage && <div className="text-red-500">{errorMessage}</div>}
 
         <div className="grid grid-cols-2 gap-4">
-          {Object.keys(characterData).map((key) => (
+          {Object.keys(characterData).map(key => (
             <div key={key} className="mb-4">
               <label htmlFor={key} className="block mb-2 text-white capitalize">{key.replace('_', ' ')}:</label>
               <input
@@ -96,9 +81,7 @@ const CharacterCreationForm = () => {
           ))}
         </div>
 
-        <button
-          type="submit"
-          className="mt-4 p-2 bg-blue-500 text-white font-bold rounded hover:bg-blue-600 transition-colors">
+        <button type="submit" className="mt-4 p-2 bg-blue-500 text-white font-bold rounded hover:bg-blue-600 transition-colors">
           Create Character
         </button>
       </form>
