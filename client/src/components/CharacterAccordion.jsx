@@ -4,6 +4,7 @@ import Accordion from "react-bootstrap/Accordion";
 
 export default function CharacterAccordion(props) {
   const { character } = props;
+  const ignoredKeys = ["__typename", "created_at"];
   let accordionKey = -1;
   console.log(character);
   return (
@@ -11,8 +12,8 @@ export default function CharacterAccordion(props) {
       {character &&
         Object.entries(character).map(
           ([key, value], index) =>
-            key !== "_typename" && (
-              <AccordionSection key={key} item={{ key, value }} />
+            !ignoredKeys.includes(key) && (
+              <AccordionSection key={key} item={{ key, value, index }} />
             )
         )}
     </Accordion>
