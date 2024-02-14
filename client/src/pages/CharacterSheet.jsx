@@ -23,11 +23,13 @@ const CharacterSheet = () => {
 
   return (
     <>
-      {loading ? (
-        <div>Loading...</div>
-      ) : (
-        <CharacterAccordion character={character} />
-      )}
+        <div className="container-background p-4 mt-5">
+        {loading ? (
+          <div>Loading...</div>
+        ) : (
+          <CharacterAccordion character={character} />
+        )}
+      </div>
     </>
   );
 };
