@@ -33,6 +33,15 @@
   }
 }
 
+.text-color {
+  color: #d2aa79 !important;
+}
+
+.input-container {
+  background-color: #8c641b !important;
+  border-color: #000000 !important;
+}
+
 .page-bg {
   background-image: linear-gradient(to bottom right, #385214, #0a0f04);
 }
@@ -46,22 +55,24 @@
 }
 
 .container-background {
-  background-color: #3c1901;
+  background-color: #200e01f0;
   border-style: solid;
   border-color: #E09200;
   border-width: 3px;
   border-radius: 25px
 }
 
-.button-background {
-  background-color: #696773;
+.button-container {
+  background-color: #363636 !important;
+  border-color: #000000 !important;
 }
 
 .header-nav {
   width: 100%;
   z-index: 999;
-  background-color: #3c1901;
+  background-color: #200e01;
   border-style: solid;
   border-color: #E09200;
+  border-width: 0px;
   border-bottom-width: 3px;
 }

@@ -64,9 +64,9 @@ const CharacterCreationForm = () => {
   };
 
   return (
-    <div className="bg-gray-800 p-8 rounded-lg shadow-lg max-w-lg mx-auto mt-5">
+    <div className="bg-gray-800 p-8 rounded-lg shadow-lg max-w-lg mx-auto mt-5 text-color">
       <form onSubmit={handleSubmit} className="flex flex-col gap-4 container-background">
-        <h2 className="text-xl font-bold mb-4 text-center text-white">
+        <h2 className="text-xl font-bold m-4 text-center">
           Complete Character Creation
         </h2>
 
@@ -421,7 +421,7 @@ const CharacterCreationForm = () => {
 
         <button
           type="submit"
-          className="mt-4 p-2 bg-blue-500 text-white font-bold rounded hover:bg-blue-600 transition-colors mb-4">
+          className="mt-4 p-2 bg-blue-500 font-bold rounded hover:bg-blue-600 transition-colors mb-4">
           Create Character
         </button>
       </form>

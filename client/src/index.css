@@ -20,9 +20,10 @@ body {
   font-weight: 400;
 
   color-scheme: light dark;
-  color: rgba(255, 255, 255, 0.87);
+  color: #9a784f;
   /* background-image: linear-gradient(to bottom right, #385214, #0a0f04) !important; */
   background-image: url("./assets/trees.jpg");
+  background-attachment: fixed;
 
   font-synthesis: none;
   text-rendering: optimizeLegibility;
