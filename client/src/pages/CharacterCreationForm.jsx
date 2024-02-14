@@ -1,9 +1,8 @@
 import React, { useState } from "react";
 import FormInput from "../components/ui/FormInput";
-import { useMutation } from '@apollo/client';
-import { ADD_CHARACTER_MUTATION } from '../utils/mutations';
-import { useNavigation } from 'react-router-dom';
-
+import { useMutation } from "@apollo/client";
+import { ADD_CHARACTER_MUTATION } from "../utils/mutations";
+import { useNavigation } from "react-router-dom";
 
 export default function CharacterCreationForm() {
   const [characterData, setCharacterData] = useState({
@@ -26,12 +25,14 @@ export default function CharacterCreationForm() {
     hit_dice: "",
   });
 
-  const [addCharacter, { loading, error }] = useMutation(ADD_CHARACTER_MUTATION);
+  const [addCharacter, { loading, error }] = useMutation(
+    ADD_CHARACTER_MUTATION
+  );
   const history = useNavigation();
 
   const handleChange = (event) => {
     const { name, value } = event.target;
-    setCharacterData(prevData => ({ ...prevData, [name]: value }));
+    setCharacterData((prevData) => ({ ...prevData, [name]: value }));
   };
 
   const handleSubmit = async (event) => {
@@ -39,14 +40,13 @@ export default function CharacterCreationForm() {
     try {
       const { data } = await addCharacter({
         variables: {
-          player: "Player Name",
+          player: "johndoe",
           ...characterData,
         },
       });
 
-      console.log('Character created:', data.addCharacter);
-      history.push('/dashboard');
-
+      console.log("Character created:", data.addCharacter);
+      history.push("/dashboard");
     } catch (error) {
       console.error("Error creating character:", error);
     }
@@ -179,8 +179,8 @@ export default function CharacterCreationForm() {
           onChange={handleChange}
         />
 
-          {/* Initiative */}
-          <FormInput
+        {/* Initiative */}
+        <FormInput
           label="Initiative"
           id="initiative"
           name="initiative"
@@ -238,5 +238,4 @@ export default function CharacterCreationForm() {
       </form>
     </div>
   );
-};
-
+}
