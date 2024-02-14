@@ -33,7 +33,7 @@ export const ADD_CHARACTER_MUTATION = gql`
   mutation AddCharacter(
     $player: String!
     $name: String!
-    $class: String!
+    $charClass: String!
     $sub_class: String!
     $level: Int!
     $strength: Int!

@@ -1,50 +1,40 @@
 import React, { useState } from "react";
 import FormInput from "../components/ui/FormInput";
-import { useMutation } from "@apollo/client";
-import { ADD_CHARACTER_MUTATION } from "../utils/mutations";
+
+import SelectOptions from "../components/ui/SelectOptions";
+import { useMutation } from '@apollo/client';
+import { ADD_CHARACTER_MUTATION } from '../utils/mutations';
+import { useNavigation } from 'react-router-dom';
+
 
 const CharacterCreationForm = () => {
   const [characterData, setCharacterData] = useState({
+    player: "",
     name: "",
     race: "",
-    class: "",
-    subclass: "",
-    background: "",
-    alignment: "",
-    level: 1,
-    xp: 0,
-    strength: 10,
-    dexterity: 10,
-    constitution: 10,
-    intelligence: 10,
-    wisdom: 10,
-    charisma: 10,
-    proficiency: 2,
-    ac: 10,
-    speed: 30,
-    hp: 10,
-    tempHp: 0,
-    traits: "",
-    ideals: "",
-    bonds: "",
-    flaws: "",
-    languages: "",
-    cp: 0,
-    sp: 0,
-    gp: 0,
-    pp: 0,
-    abilities: "",
-    spells: "",
-    skills: "",
-    equipment: "",
-    feats: "",
+    charClass: "",
+    sub_class: "",
+    level: "",
+    strength: "",
+    dexterity: "",
+    constitution: "",
+    intelligence: "",
+    wisdom: "",
+    charisma: "",
+    armor_class: "",
+    initiative: "",
+    speed: "",
+    hit_points: "",
+    perception: "",
+    hit_dice: "",
   });
 
-  const [addCharacter] = useMutation(ADD_CHARACTER_MUTATION);
+  const [addCharacter, { loading, error }] = useMutation(ADD_CHARACTER_MUTATION);
+  const history = useNavigation();
 
   const handleChange = (event) => {
     const { name, value } = event.target;
-    setCharacterData((prevData) => ({ ...prevData, [name]: value }));
+    setCharacterData(prevData => ({ ...prevData, [name]: value }));
   };
 
   const handleSubmit = async (event) => {
@@ -56,7 +46,10 @@ const CharacterCreationForm = () => {
           ...characterData,
         },
       });
-      console.log("Character created:", data.addCharacter);
+
+      console.log('Character created:', data.addCharacter);
+      history.push('/dashboard');
+
     } catch (error) {
       console.error("Error creating character:", error);
     }
@@ -68,6 +61,16 @@ const CharacterCreationForm = () => {
         <h2 className="text-xl font-bold mb-4 text-center text-white">
           Complete Character Creation
         </h2>
+
+        {/* Player */}
+        <FormInput
+          label="Player"
+          id="Player"
+          name="Player"
+          type="text"
+          value={characterData.name}
+          onChange={handleChange}
+        />
 
         {/* Name */}
         <FormInput
@@ -420,7 +423,8 @@ const CharacterCreationForm = () => {
 
         <button
           type="submit"
-          className="mt-4 p-2 bg-blue-500 text-white font-bold rounded hover:bg-blue-600 transition-colors">
+          className="mt-4 p-2 bg-blue-500 text-white font-bold rounded hover:bg-blue-600 transition-colors"
+        >
           Create Character
         </button>
       </form>
