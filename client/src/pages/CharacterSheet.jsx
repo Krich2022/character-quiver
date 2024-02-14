@@ -1,36 +1,22 @@
-import React from 'react';
-import CharacterDetails from './CharacterDetails';
-const CharacterSheet = ({ character }) => {
+import React, { useState, useEffect } from 'react';
+import CharacterAccordion from '../components/CharacterAccordion';
+import { useDispatch, useSelector } from 'react-redux';
+import { fetchSingleCharacterRequest } from '../utils/actions';
+import { useParams } from 'react-router-dom';
+
+const CharacterSheet = () => {
+  
+  const dispatch = useDispatch();
+  const { id } = useParams();
+
+  useEffect(() => {
+    dispatch(fetchSingleCharacterRequest(id));
+  }, [dispatch, id]);
+  const character = useSelector(state => state.character);
+
   return (
     <>
-      <CharacterInfo/>
-      <CharacterEquipment/>
-      <CharacterClass/>
-      <CharacterSubClass/>
-      <CharacterBackground/>
-      <CharacterAlignment/>
-      <CharacterLevel/>
-      <CharacterXp/>
-      <CharacterStrength/>
-      <CharacterDexterity/>
-      <CharacterConstitution/>
-      <CharacterInteligence/>
-      <CharacterWisdom/>
-      <CharacterCharisma/>
-      <CharacterProficiency/>
-      <CharacterSavingThrows/>
-      <CharacterAc/>
-      <CharacterSpeed/>
-      <CharacterHp/>
-      <CharacterTempHp/>
-      <CharacterTraits/>
-      <CharacterIdeals/>
-      <CharacterBonds/>
-      <CharacterFlaws/>
-      <CharacterLanguages/>
-      <CharacterMoney/>
-      <CharacterAbilities/>
-      <CharacterSpells/>
+      {character && <CharacterAccordion character={character} />}
     </>
   );
 };
