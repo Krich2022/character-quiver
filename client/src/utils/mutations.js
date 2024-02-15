@@ -1,4 +1,4 @@
-import { gql } from '@apollo/client';
+import { gql } from "@apollo/client";
 
 // Login mutation
 export const LOGIN_MUTATION = gql`
@@ -48,11 +48,12 @@ export const ADD_CHARACTER_MUTATION = gql`
     $hit_points: Int!
     $perception: Int!
     $hit_dice: Int!
+    $race: String!
   ) {
     addCharacter(
       player: $player
       name: $name
-      charClass: $class
+      charClass: $charClass
       sub_class: $sub_class
       level: $level
       strength: $strength
@@ -67,6 +68,7 @@ export const ADD_CHARACTER_MUTATION = gql`
       hit_points: $hit_points
       perception: $perception
       hit_dice: $hit_dice
+      race: $race
     ) {
       _id
       player
@@ -81,11 +83,13 @@ export const ADD_CHARACTER_MUTATION = gql`
       wisdom
       charisma
       armor_class
+      created_at
       initiative
       speed
       hit_points
       perception
       hit_dice
+      race
     }
   }
 `;

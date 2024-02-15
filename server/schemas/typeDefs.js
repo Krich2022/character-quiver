@@ -27,6 +27,7 @@ type Character {
     hit_points: Int
     perception: Int
     hit_dice: Int
+    race: String
 }
 
 type Auth {

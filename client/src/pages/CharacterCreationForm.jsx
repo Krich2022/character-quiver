@@ -38,6 +38,29 @@ export default function CharacterCreationForm() {
   const handleSubmit = async (event) => {
     event.preventDefault();
     try {
+      // Convert string values to numbers where necessary
+      Object.keys(characterData).forEach((key) => {
+        if (
+          [
+            "level",
+            "strength",
+            "dexterity",
+            "constitution",
+            "intelligence",
+            "wisdom",
+            "charisma",
+            "armor_class",
+            "initiative",
+            "speed",
+            "hit_points",
+            "perception",
+            "hit_dice",
+          ].includes(key)
+        ) {
+          characterData[key] = parseInt(characterData[key], 10);
+        }
+      });
+      console.log(characterData);
       const { data } = await addCharacter({
         variables: {
           player: "johndoe",
@@ -231,8 +254,7 @@ export default function CharacterCreationForm() {
 
         <button
           type="submit"
-          className="mt-4 p-2 bg-blue-500 text-white font-bold rounded hover:bg-blue-600 transition-colors"
-        >
+          className="mt-4 p-2 bg-blue-500 text-white font-bold rounded hover:bg-blue-600 transition-colors">
           Create Character
         </button>
       </form>
