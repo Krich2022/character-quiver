@@ -11,7 +11,7 @@ type Character {
     _id: ID
     player: String
     name: String
-    charClass: String
+    char_class: String
     sub_class: String
     level: Int
     strength: Int
@@ -27,6 +27,7 @@ type Character {
     hit_points: Int
     perception: Int
     hit_dice: Int
+    race: String
 }
 
 type Auth {
@@ -44,8 +45,8 @@ type Query {
 type Mutation {
     addUser(username: String!, email: String!, password: String!): Auth
     login(email: String!, password: String!): Auth
-    addCharacter(player: String!, name: String!, charClass: String!, sub_class: String!, level: Int!, strength: Int!, dexterity: Int!, constitution: Int!, intelligence: Int!, wisdom: Int!, charisma: Int!, armor_class: Int!, initiative: Int!, speed: Int!, hit_points: Int!, perception: Int!, hit_dice: Int!, race: String!): Character
-    updateCharacter(_id: ID!, player: String, name: String, charClass: String, sub_class: String, level: Int, strength: Int, dexterity: Int, constitution: Int, intelligence: Int, wisdom: Int, charisma: Int, armor_class: Int, initiative: Int, speed: Int, hit_points: Int, perception: Int, hit_dice: Int, race: String!): Character
+    addCharacter(player: String!, name: String!, char_class: String!, sub_class: String!, level: Int!, strength: Int!, dexterity: Int!, constitution: Int!, intelligence: Int!, wisdom: Int!, charisma: Int!, armor_class: Int!, initiative: Int!, speed: Int!, hit_points: Int!, perception: Int!, hit_dice: Int!, race: String!): Character
+    updateCharacter(_id: ID!, player: String, name: String, char_class: String, sub_class: String, level: Int, strength: Int, dexterity: Int, constitution: Int, intelligence: Int, wisdom: Int, charisma: Int, armor_class: Int, initiative: Int, speed: Int, hit_points: Int, perception: Int, hit_dice: Int, race: String!): Character
     deleteCharacter(_id: ID!): Boolean
 }
 `;

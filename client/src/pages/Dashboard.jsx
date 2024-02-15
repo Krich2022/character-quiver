@@ -2,12 +2,13 @@ import { useEffect, useState } from "react";
 import { useQuery } from "@apollo/client";
 import { GET_CHARACTERS_FOR_USER } from "../utils/queries";
 import CharacterCard from "../components/ui/Card";
-import Container from 'react-bootstrap/Container';
-import Row from 'react-bootstrap/Row';
+import Container from "react-bootstrap/Container";
+import Row from "react-bootstrap/Row";
 
 export default function Dashboard() {
   const [charactersState, setCharactersState] = useState([]);
   const { loading, error, data, refetch } = useQuery(GET_CHARACTERS_FOR_USER, {
+    fetchPolicy: "network-only",
     variables: { username: "johndoe" },
   });
 
@@ -24,9 +25,9 @@ export default function Dashboard() {
   return (
     <Container>
       <Row>
-      {charactersState.map((character) => (
-        <CharacterCard key={character._id} {...character}></CharacterCard>
-      ))}
+        {charactersState.map((character) => (
+          <CharacterCard key={character._id} {...character}></CharacterCard>
+        ))}
       </Row>
     </Container>
   );

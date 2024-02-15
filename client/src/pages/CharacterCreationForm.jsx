@@ -2,13 +2,15 @@ import React, { useState } from "react";
 import FormInput from "../components/ui/FormInput";
 import { useMutation } from "@apollo/client";
 import { ADD_CHARACTER_MUTATION } from "../utils/mutations";
-import { useNavigation } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
+import { useStoreContext } from "../utils/GlobalState";
 
 export default function CharacterCreationForm() {
+  const state = useStoreContext();
   const [characterData, setCharacterData] = useState({
     name: "",
     race: "",
-    charClass: "",
+    char_class: "",
     sub_class: "",
     level: "",
     strength: "",
@@ -24,11 +26,12 @@ export default function CharacterCreationForm() {
     perception: "",
     hit_dice: "",
   });
+  console.log(state);
 
   const [addCharacter, { loading, error }] = useMutation(
     ADD_CHARACTER_MUTATION
   );
-  const history = useNavigation();
+  const navigate = useNavigate();
 
   const handleChange = (event) => {
     const { name, value } = event.target;
@@ -38,6 +41,30 @@ export default function CharacterCreationForm() {
   const handleSubmit = async (event) => {
     event.preventDefault();
     try {
+      // Convert string values to numbers where necessary
+      Object.keys(characterData).forEach((key) => {
+        if (
+          [
+            "level",
+            "strength",
+            "dexterity",
+            "constitution",
+            "intelligence",
+            "wisdom",
+            "charisma",
+            "armor_class",
+            "initiative",
+            "speed",
+            "hit_points",
+            "perception",
+            "hit_dice",
+          ].includes(key)
+        ) {
+          characterData[key] = parseInt(characterData[key], 10);
+        }
+      });
+      console.log(characterData);
+
       const { data } = await addCharacter({
         variables: {
           player: "johndoe",
@@ -46,7 +73,7 @@ export default function CharacterCreationForm() {
       });
 
       console.log("Character created:", data.addCharacter);
-      history.push("/dashboard");
+      navigate("/dashboard");
     } catch (error) {
       console.error("Error creating character:", error);
     }
@@ -82,10 +109,10 @@ export default function CharacterCreationForm() {
         {/* Class */}
         <FormInput
           label="Class"
-          id="charClass"
-          name="charClass"
+          id="char_class"
+          name="char_class"
           type="text"
-          value={characterData.charClass}
+          value={characterData.char_class}
           onChange={handleChange}
         />
 
@@ -231,8 +258,7 @@ export default function CharacterCreationForm() {
 
         <button
           type="submit"
-          className="mt-4 p-2 bg-blue-500 text-white font-bold rounded hover:bg-blue-600 transition-colors"
-        >
+          className="mt-4 p-2 bg-blue-500 text-white font-bold rounded hover:bg-blue-600 transition-colors">
           Create Character
         </button>
       </form>

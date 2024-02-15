@@ -70,7 +70,7 @@ export const GET_CHARACTERS_FOR_USER = gql`
     user(username: $username) {
       characters {
         _id
-        charClass
+        char_class
         level
         name
       }
@@ -83,7 +83,7 @@ export const GET_CHARACTER_BY_ID = gql`
   query GetCharacterById($characterId: ID!) {
     character(characterId: $characterId) {
       armor_class
-      charClass
+      char_class
       charisma
       constitution
       created_at
