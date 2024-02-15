@@ -9,14 +9,14 @@ export default function Dashboard() {
   const [charactersState, setCharactersState] = useState([]);
   const { loading, error, data, refetch } = useQuery(GET_CHARACTERS_FOR_USER, {
     fetchPolicy: "network-only",
-    variables: { username: "johndoe" },
+    variables: { player: "johndoe" },
   });
 
   useEffect(() => {
     if (!loading && !error) {
       console.log("Characters fetched successfully");
       console.log(data);
-      setCharactersState(data.user.characters);
+      setCharactersState(data.characters);
       console.log(charactersState);
     } else if (error) {
       console.error("Error fetching characters: ", error);

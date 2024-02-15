@@ -9,8 +9,8 @@ const resolvers = {
     user: async (parent, { username }) => {
       return User.findOne({ username }).populate("characters");
     },
-    characters: async (parent, { username }) => {
-      const params = username ? { username } : {};
+    characters: async (parent, { player }) => {
+      const params = player ? { player } : {};
       return Character.find(params).sort({ created_at: -1 });
     },
     character: async (parent, { characterId }) => {

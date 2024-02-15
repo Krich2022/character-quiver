@@ -38,7 +38,7 @@ type Auth {
 type Query {
     users: [User]
     user(username: String!): User
-    characters(username: String): [Character]
+    characters(player: String): [Character]
     character(characterId: ID!): Character
 }
 

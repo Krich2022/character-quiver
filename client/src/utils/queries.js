@@ -66,14 +66,12 @@ export const GET_USER_BY_USERNAME = gql`
 
 // Query to get all characters for a user
 export const GET_CHARACTERS_FOR_USER = gql`
-  query GetCharactersForUser($username: String!) {
-    user(username: $username) {
-      characters {
-        _id
-        char_class
-        level
-        name
-      }
+  query GetCharactersForUser($player: String!) {
+    characters(player: $player) {
+      _id
+      char_class
+      level
+      name
     }
   }
 `;
