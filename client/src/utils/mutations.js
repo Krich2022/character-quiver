@@ -33,7 +33,7 @@ export const ADD_CHARACTER_MUTATION = gql`
   mutation AddCharacter(
     $player: String!
     $name: String!
-    $charClass: String!
+    $char_class: String!
     $sub_class: String!
     $level: Int!
     $strength: Int!
@@ -53,7 +53,7 @@ export const ADD_CHARACTER_MUTATION = gql`
     addCharacter(
       player: $player
       name: $name
-      charClass: $charClass
+      char_class: $char_class
       sub_class: $sub_class
       level: $level
       strength: $strength
@@ -73,7 +73,7 @@ export const ADD_CHARACTER_MUTATION = gql`
       _id
       player
       name
-      charClass
+      char_class
       sub_class
       level
       strength

@@ -6,8 +6,11 @@ import { useParams } from "react-router-dom";
 
 const CharacterSheet = () => {
   const [character, setCharacter] = useState({});
+  const params = useParams();
+  const id = params.id;
+  console.log(id);
   const { loading, error, data, refetch } = useQuery(GET_CHARACTER_BY_ID, {
-    variables: { characterId: "65cc36fc9cb86f281ade0f61" },
+    variables: { characterId: id },
   });
 
   useEffect(() => {
@@ -23,7 +26,7 @@ const CharacterSheet = () => {
 
   return (
     <>
-        <div className="container-background p-4 mt-5">
+      <div className="container-background p-4 mt-5">
         {loading ? (
           <div>Loading...</div>
         ) : (

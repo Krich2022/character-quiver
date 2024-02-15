@@ -9,6 +9,7 @@ const initialAuthState = {
 const authReducer = (state = initialAuthState, action) => {
   switch (action.type) {
     case LOGIN_SUCCESS:
+      console.log(action.payload.user, "login success");
       return {
         ...state,
         isAuthenticated: true,

@@ -9,7 +9,7 @@ db.once("open", async () => {
     {
       player: "johndoe",
       name: "Elrond Half-elven",
-      charClass: "Wizard",
+      char_class: "Wizard",
       sub_class: "Enchanter",
       level: 1,
       strength: 10,
@@ -29,7 +29,7 @@ db.once("open", async () => {
     {
       player: "johndoe",
       name: "Gandalf the Grey",
-      charClass: "Wizard",
+      char_class: "Wizard",
       level: 1,
       strength: 12,
       dexterity: 10,
@@ -48,7 +48,7 @@ db.once("open", async () => {
     {
       player: "johndoe",
       name: "Frodo Baggins",
-      charClass: "Rogue",
+      char_class: "Rogue",
       level: 1,
       strength: 10,
       dexterity: 14,

@@ -2,13 +2,15 @@ import React, { useState } from "react";
 import FormInput from "../components/ui/FormInput";
 import { useMutation } from "@apollo/client";
 import { ADD_CHARACTER_MUTATION } from "../utils/mutations";
-import { useNavigation } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
+import { useStoreContext } from "../utils/GlobalState";
 
 export default function CharacterCreationForm() {
+  const state = useStoreContext();
   const [characterData, setCharacterData] = useState({
     name: "",
     race: "",
-    charClass: "",
+    char_class: "",
     sub_class: "",
     level: "",
     strength: "",
@@ -24,11 +26,12 @@ export default function CharacterCreationForm() {
     perception: "",
     hit_dice: "",
   });
+  console.log(state);
 
   const [addCharacter, { loading, error }] = useMutation(
     ADD_CHARACTER_MUTATION
   );
-  const history = useNavigation();
+  const navigate = useNavigate();
 
   const handleChange = (event) => {
     const { name, value } = event.target;
@@ -61,6 +64,7 @@ export default function CharacterCreationForm() {
         }
       });
       console.log(characterData);
+
       const { data } = await addCharacter({
         variables: {
           player: "johndoe",
@@ -69,7 +73,7 @@ export default function CharacterCreationForm() {
       });
 
       console.log("Character created:", data.addCharacter);
-      history.push("/dashboard");
+      navigate("/dashboard");
     } catch (error) {
       console.error("Error creating character:", error);
     }
@@ -105,10 +109,10 @@ export default function CharacterCreationForm() {
         {/* Class */}
         <FormInput
           label="Class"
-          id="charClass"
-          name="charClass"
+          id="char_class"
+          name="char_class"
           type="text"
-          value={characterData.charClass}
+          value={characterData.char_class}
           onChange={handleChange}
         />
 

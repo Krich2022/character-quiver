@@ -3,7 +3,7 @@ import { Accordion } from "react-bootstrap";
 export default function AccordionSection({ item }) {
   const normalKeys = {
     armor_class: "Armor Class",
-    charClass: "Character Class",
+    char_class: "Character Class",
     charisma: "Charisma",
     constitution: "Constitution",
     created_at: "Created At",

@@ -11,7 +11,7 @@ const characterSchema = new Schema({
     unique: true,
     trim: true,
   },
-  charClass: {
+  char_class: {
     type: String,
   },
   sub_class: {
