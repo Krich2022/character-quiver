@@ -13,6 +13,7 @@ import Landing from "./pages/Landing.jsx";
 import CharacterCreationForm from "./pages/CharacterCreationForm.jsx";
 import CharacterSheet from "./pages/CharacterSheet.jsx";
 import Dashboard from "./pages/Dashboard.jsx";
+import CreateCharacter from "./pages/testCharacter.jsx";
 
 const router = createBrowserRouter([
   {
@@ -40,6 +41,10 @@ const router = createBrowserRouter([
       {
         path: "/character/:id",
         element: <CharacterSheet />,
+      },
+      {
+        path: "/test",
+        element: <CreateCharacter />,
       },
     ],
   },
