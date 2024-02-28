@@ -1,42 +1,51 @@
+import dnd5eClient from "../utils/dnd5eServer";
+import { GET_ALL_CLASSES } from "../utils/queries/classQueries";
+import { useQuery } from "@apollo/client";
+import { useEffect, useState } from "react";
 import Transition from "../components/ui/Transition";
-export default function CreateCharacter() {
-  var myHeaders = new Headers();
-  myHeaders.append("Accept", "application/json");
-  const options = [
-    {
-      title: "Character Details",
-      select: ["race", "class", "background", "alignment"],
-      numberInputs: ["Hit Points", "STR", "DEX", "CON", "WIS", "INT", "CHA"],
-    },
-    {
-      title: "Features & Traits",
-      select: ["race", "class", "background", "alignment"],
-    },
-    {
-      title: "Equipment",
-      select: ["race", "class", "background", "alignment"],
-    },
-    {
-      title: "Character Background",
-      select: ["race", "class", "background", "alignment"],
-    },
-  ];
+import CharacterForm from "../components/CharacterForm";
+import { Button } from "react-bootstrap";
 
-  var requestOptions = {
-    method: "GET",
-    headers: myHeaders,
-    redirect: "follow",
+import Select from "../components/ui/Select";
+
+export default function CreateCharacter() {
+  const [options, setOptions] = useState([]);
+  const [selectChoice, setSelectState] = useState();
+  const [nextClick, setNextClick] = useState(false);
+  const { loading, error, data } = useQuery(GET_ALL_CLASSES, {
+    client: dnd5eClient,
+  });
+
+  useEffect(() => {
+    if (data) {
+      setOptions(data.classes);
+    }
+  }, [data]);
+  useEffect(() => {
+    if (options.length > 0) {
+    }
+  }, [options]);
+
+  const handleSelectChange = (event) => {
+    setSelectState(event.target.value);
   };
 
-  fetch("https://www.dnd5eapi.co/api/backgrounds", requestOptions)
-    .then((response) => response.text())
-    .then((result) => console.log(result))
-    .catch((error) => console.log("error", error));
+  const handleNextClick = () => {
+    setNextClick(true);
+  };
+
+  if (loading) return <p>Loading...</p>;
+  if (error) return <p>Error :(</p>;
   return (
-    <>
-      {options.map((option, index) => (
-        <Transition {...option} />
-      ))}
-    </>
+    <div>
+      {!nextClick ? (
+        <>
+          <Select options={options} onChange={handleSelectChange} />
+          <Button onClick={handleNextClick}>Next</Button>
+        </>
+      ) : (
+        <CharacterForm />
+      )}
+    </div>
   );
 }

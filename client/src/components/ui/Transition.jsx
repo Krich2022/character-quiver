@@ -6,23 +6,26 @@ export default function CharacterTransition(option) {
   const [open, setOpen] = useState(false);
 
   return (
-    <div>
+    <div className="mw3">
       <Button
         onClick={() => setOpen(!open)}
         aria-controls="example-collapse-text"
-        aria-expanded={open}>
-        {option.title}
+        aria-expanded={open}
+      >
+        {option.name}
       </Button>
       <Collapse in={open}>
         <div
           className="container-background  enable-rounded text-color"
-          id="example-collapse-text">
-          {option.select.map((selectOption, index) => (
-            <Form.Select key={index} aria-label={`Select ${selectOption}`}>
-              <option>Select {selectOption}</option>
-              {/* You can populate the options based on your requirements */}
-            </Form.Select>
-          ))}
+          id="example-collapse-text"
+        >
+          {option.select &&
+            option.select.map((selectOption, index) => (
+              <Form.Select key={index} aria-label={`Select ${selectOption}`}>
+                <option>Select {selectOption}</option>
+                {/* You can populate the options based on your requirements */}
+              </Form.Select>
+            ))}
         </div>
       </Collapse>
     </div>
