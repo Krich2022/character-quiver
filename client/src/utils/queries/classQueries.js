@@ -38,3 +38,46 @@ export const GET_CHARACTER_INFO = gql`
     }
   }
 `;
+
+export const GET_PROF_AND_EQUIP = gql`
+  query ProfAndEquip($index: String) {
+    class(index: $index) {
+      proficiency_choices {
+        choose
+        desc
+        from {
+          options {
+            ... on ProficiencyReferenceOption {
+              item {
+                name
+                index
+              }
+            }
+            ... on ProficiencyChoiceOption {
+              choice {
+                desc
+                choose
+              }
+            }
+          }
+        }
+      }
+      starting_equipment_options {
+        choose
+        desc
+        from {
+          ... on EquipmentOptionSet {
+            options {
+              ... on CountedReferenceOption {
+                of {
+                  index
+                  name
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+`;

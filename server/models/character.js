@@ -63,6 +63,12 @@ const characterSchema = new Schema({
   race: {
     type: String,
   },
+  spells: {
+    type: [String],
+  },
+  equipment: {
+    type: [String],
+  },
 });
 
 const Character = model("Character", characterSchema);

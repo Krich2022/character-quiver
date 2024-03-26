@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { Button, Form } from "react-bootstrap";
+import { Button, Form, Alert } from "react-bootstrap";
 import { useMutation } from "@apollo/client";
 import { LOGIN_MUTATION } from "../utils/mutations";
 import { useDispatch } from "react-redux";
@@ -12,9 +12,11 @@ function LoginPage(props) {
   const [login] = useMutation(LOGIN_MUTATION);
   // const dispatch = useDispatch();
   const [state, dispatch] = useStoreContext();
+  let [loginFailed, setLoginFailed] = useState(false);
 
   const handleSubmit = async (event) => {
     event.preventDefault();
+    setLoginFailed(false);
     try {
       const mutationResponse = await login({
         variables: {
@@ -31,6 +33,7 @@ function LoginPage(props) {
       dispatch(loginSuccess(token, user));
     } catch (err) {
       console.error("Login failed:", err);
+      setLoginFailed(true);
     }
   };
 
@@ -43,9 +46,16 @@ function LoginPage(props) {
     <>
       <div
         direction="vertical"
-        className="container-background p-5 enable-rounded text-color">
+        className="container-background p-5 enable-rounded text-color login-width"
+      >
         <h2 className="pb-3">Login to your account</h2>
-
+        {loginFailed ? (
+          <Alert key="danger" variant="danger">
+            Username or Password is incorrect
+          </Alert>
+        ) : (
+          <></>
+        )}
         <form>
           <Form.Control
             type="input"
